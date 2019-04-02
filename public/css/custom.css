@@ -1,0 +1,46 @@
+body {
+  padding-top: 56px;
+}
+
+.carousel-item {
+  height: 65vh;
+  min-height: 300px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.portfolio-item {
+  margin-bottom: 30px;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: #fff !important;
+}
+
+.nav-bg {
+  background-color: #54000E !important;
+}
+
+.navbar-toggler-icon {
+  color: #fff !important;
+}
+
+.search {
+  position: relative;
+  bottom: 40px;
+}
+
+.search-bar {
+  height: 80px;
+  font-size: 1.4em;
+  padding-left: 30px;
+}
+
+.shadow {
+  -moz-box-shadow: 3px 3px 5px 6px #54000E;
+  -webkit-box-shadow: 3px 3px 5px 6px #54000E;
+  box-shadow: 3px 3px 5px 6px #54000E;
+}
