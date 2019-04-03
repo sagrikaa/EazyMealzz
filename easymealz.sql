@@ -72,7 +72,7 @@ DROP TABLE IF EXISTS `ingredients`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `ingredients` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ingredient_id` int(11) NOT NULL AUTO_INCREMENT,
   `ingredient_name` varchar(45) NOT NULL,
   `ingredient_description` varchar(45) DEFAULT NULL,
   `serving_size` varchar(45) DEFAULT NULL,
@@ -80,7 +80,7 @@ CREATE TABLE `ingredients` (
   `fats` decimal(5,2) DEFAULT NULL,
   `carbohydrates` decimal(5,2) DEFAULT NULL,
   `proteins` decimal(5,2) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`ingredient_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -126,11 +126,11 @@ DROP TABLE IF EXISTS `posts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `posts` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `post_id` int(11) NOT NULL AUTO_INCREMENT,
   `post_status` varchar(1000) DEFAULT NULL,
   `post_link` varchar(45) NOT NULL,
   `user_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`post_id`),
   KEY `user_id_idx` (`user_id`),
   CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -161,8 +161,8 @@ CREATE TABLE `recipe_ingredients` (
   PRIMARY KEY (`id`),
   KEY `recipe_id_idx` (`recipe_id`),
   KEY `ingredient_id_idx` (`ingredient_id`),
-  CONSTRAINT `ingredient_id` FOREIGN KEY (`ingredient_id`) REFERENCES `ingredients` (`id`),
-  CONSTRAINT `recipe_id` FOREIGN KEY (`recipe_id`) REFERENCES `recipes` (`id`)
+  CONSTRAINT `ingredient_id` FOREIGN KEY (`ingredient_id`) REFERENCES `ingredients` (`ingredient_id`),
+  CONSTRAINT `recipe_id` FOREIGN KEY (`recipe_id`) REFERENCES `recipes` (`recipe_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -184,14 +184,14 @@ DROP TABLE IF EXISTS `recipes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `recipes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `recipe_id` int(11) NOT NULL AUTO_INCREMENT,
   `recipe_name` varchar(45) NOT NULL,
   `recipe_description` varchar(250) DEFAULT NULL,
   `recipe_image_url` varchar(45) DEFAULT NULL,
   `recipe_servings` varchar(45) NOT NULL,
   `recipe_calories` varchar(45) DEFAULT NULL,
   `recipe_steps` varchar(1000) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`recipe_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
