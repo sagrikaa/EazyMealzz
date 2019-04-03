@@ -1,6 +1,6 @@
--- MySQL dump 10.13  Distrib 8.0.14, for macos10.14 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.14, for Win64 (x86_64)
 --
--- Host: localhost    Database: EasyMealz
+-- Host: localhost    Database: eazymealz
 -- ------------------------------------------------------
 -- Server version	8.0.14
 
@@ -103,7 +103,7 @@ DROP TABLE IF EXISTS `migrations`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `migrations` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -126,11 +126,11 @@ DROP TABLE IF EXISTS `posts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `posts` (
-  `post_id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `post_status` varchar(1000) DEFAULT NULL,
   `post_link` varchar(45) NOT NULL,
   `user_id` int(11) NOT NULL,
-  PRIMARY KEY (`post_id`),
+  PRIMARY KEY (`id`),
   KEY `user_id_idx` (`user_id`),
   CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -142,7 +142,6 @@ CREATE TABLE `posts` (
 
 LOCK TABLES `posts` WRITE;
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
-INSERT INTO `posts` VALUES (1,'Check out this amzing french toast recipe','http://www.easymealz.com/recipes/1',1);
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -162,7 +161,7 @@ CREATE TABLE `recipe_ingredients` (
   KEY `recipe_id_idx` (`recipe_id`),
   KEY `ingredient_id_idx` (`ingredient_id`),
   CONSTRAINT `ingredient_id` FOREIGN KEY (`ingredient_id`) REFERENCES `ingredients` (`ingredient_id`),
-  CONSTRAINT `recipe_id` FOREIGN KEY (`recipe_id`) REFERENCES `recipes` (`recipe_id`)
+  CONSTRAINT `recipe_id` FOREIGN KEY (`recipe_id`) REFERENCES `recipes` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -184,14 +183,14 @@ DROP TABLE IF EXISTS `recipes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `recipes` (
-  `recipe_id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `recipe_name` varchar(45) NOT NULL,
   `recipe_description` varchar(250) DEFAULT NULL,
   `recipe_image_url` varchar(45) DEFAULT NULL,
   `recipe_servings` varchar(45) NOT NULL,
   `recipe_calories` varchar(45) DEFAULT NULL,
   `recipe_steps` varchar(1000) NOT NULL,
-  PRIMARY KEY (`recipe_id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -239,13 +238,13 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(45) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `name` varchar(45) NOT NULL,
-  `type` varchar(1) NOT NULL DEFAULT 'u',
-  `avatar` varchar(45) DEFAULT NULL,
-  `remember_token` varchar(255) DEFAULT NULL,
+  `password` varchar(45) NOT NULL,
+  `first_name` varchar(45) NOT NULL,
+  `last_name` varchar(45) NOT NULL,
+  `user_type` varchar(1) NOT NULL,
+  `user_status` varchar(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -254,7 +253,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'testuser@gmail.com','testpass','User','u',NULL,NULL),(2,'testadmin@gmail.com','testpass','Admin','a',NULL,NULL),(17,'singh.harshdeep@live.in','$2y$10$DSCIdLNA7gSD80hrxB8eHe7YRYxB5lGxiqf1o7ExvdFcJqvjGphGO','Harshdeep Singh','u',NULL,NULL),(18,'test@gmail.com','$2y$10$QkRUGH.f4639OE5yVGMAYO5F/Ih5afyr91I3OFXNTXxwIQ2BSRYt2','Test','u',NULL,NULL);
+INSERT INTO `users` VALUES (1,'testuser@gmail.com','testpass','Test','User','u','Active'),(2,'testadmin@gmail.com','testpass','Test','Admin','a','Active'),(3,'testuser@gmail.com','testpass','Test','User','u','Active'),(4,'testadmin@gmail.com','testpass','Test','Admin','a','Active'),(5,'testuser@gmail.com','testpass','Test','User','u','Active'),(6,'testadmin@gmail.com','testpass','Test','Admin','a','Active'),(7,'testuser@gmail.com','testpass','Test','User','u','Active'),(8,'testadmin@gmail.com','testpass','Test','Admin','a','Active'),(9,'testuser@gmail.com','testpass','Test','User','u','Active'),(10,'testadmin@gmail.com','testpass','Test','Admin','a','Active'),(11,'testuser@gmail.com','testpass','Test','User','u','Active'),(12,'testadmin@gmail.com','testpass','Test','Admin','a','Active'),(13,'testuser@gmail.com','testpass','Test','User','u','Active'),(14,'testadmin@gmail.com','testpass','Test','Admin','a','Active'),(15,'testuser@gmail.com','testpass','Test','User','u','Active'),(16,'testadmin@gmail.com','testpass','Test','Admin','a','Active');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -267,4 +266,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-03 11:48:19
+-- Dump completed on 2019-04-03 12:46:46
