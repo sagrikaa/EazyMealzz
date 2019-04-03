@@ -40,7 +40,7 @@
                       <div class="h5">6758</div>
                   </li>
                   <li class="list-group-item">
-                      <div class="h6 text-muted"><a href={{url('/profileSettings')}} class="btn btn-warning btn-large" >Settings</a></div>
+                      <div class="h6 text-muted"><a href={{route('profileSettings')}} class="btn btn-warning btn-large" >Settings</a></div>
                       
                   </li>
                   <li class="list-group-item">Vestibulum at eros</li>

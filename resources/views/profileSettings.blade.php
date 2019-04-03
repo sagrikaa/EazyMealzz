@@ -15,7 +15,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="account-fn">First Name</label>
-                    {{-- <input class="form-control" type="text" name="account-fn" value="<?=$user_details->first_name?>" > --}}
+                  <input class="form-control" type="text" name="account-fn" value="" >
                     <input class="form-control" type="text" name="account-fn" value="" >
                 </div>
             </div>

@@ -31,5 +31,5 @@ Route::get('/feed', function () {
 });
 
 Route::get('/profilesetting', function () {
-    return view('profileSettings');
+    return view('profileSettingsnew');
 });
