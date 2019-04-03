@@ -72,7 +72,7 @@ DROP TABLE IF EXISTS `ingredients`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `ingredients` (
-  `ingredient_id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `ingredient_name` varchar(45) NOT NULL,
   `ingredient_description` varchar(45) DEFAULT NULL,
   `serving_size` varchar(45) DEFAULT NULL,
@@ -80,7 +80,7 @@ CREATE TABLE `ingredients` (
   `fats` decimal(5,2) DEFAULT NULL,
   `carbohydrates` decimal(5,2) DEFAULT NULL,
   `proteins` decimal(5,2) DEFAULT NULL,
-  PRIMARY KEY (`ingredient_id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -126,11 +126,11 @@ DROP TABLE IF EXISTS `posts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `posts` (
-  `post_id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `post_status` varchar(1000) DEFAULT NULL,
   `post_link` varchar(45) NOT NULL,
   `user_id` int(11) NOT NULL,
-  PRIMARY KEY (`post_id`),
+  PRIMARY KEY (`id`),
   KEY `user_id_idx` (`user_id`),
   CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -184,14 +184,14 @@ DROP TABLE IF EXISTS `recipes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `recipes` (
-  `recipe_id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `recipe_name` varchar(45) NOT NULL,
   `recipe_description` varchar(250) DEFAULT NULL,
   `recipe_image_url` varchar(45) DEFAULT NULL,
   `recipe_servings` varchar(45) NOT NULL,
   `recipe_calories` varchar(45) DEFAULT NULL,
   `recipe_steps` varchar(1000) NOT NULL,
-  PRIMARY KEY (`recipe_id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
