@@ -18,9 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/master', function () {
-    return view('index');
-});
+
 
 Route::get('/contact', function () {
     return view('contactus');
@@ -32,4 +30,13 @@ Route::get('/feed', function () {
 
 Route::get('/profilesetting', function () {
     return view('profileSettingsnew');
+});
+
+Route::get('/admin', function () {
+    return view('admin');
+});
+
+Route::get('user', 'UserController@index');
+Route::get('/userd', function () {
+    return view('/user/user_display');
 });

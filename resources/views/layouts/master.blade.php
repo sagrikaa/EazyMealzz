@@ -12,14 +12,12 @@
 
     <!-- Bootstrap core CSS -->
     <link href={{asset('css/bootstrap.min.css')}} rel="stylesheet">
-
     <!-- Custom styles for this template -->n
     <link href={{asset('css/custom.css')}} rel="stylesheet">
     <link href={{asset('css/dashb.css')}} rel="stylesheet">
 </head>
 
 <body>
-
   <!-- Navigation -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark nav-bg fixed-top shadow">
     <div class="container">
@@ -83,6 +81,7 @@
         </div>
         
     </header>
+    
     @yield('content')
     
     <!-- Footer -->
