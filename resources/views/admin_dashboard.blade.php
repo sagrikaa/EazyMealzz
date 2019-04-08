@@ -23,7 +23,7 @@
                         <input list="scopes" name="scope" placeholder="Select scope">
                           <datalist id="scopes">
                             <option value="users">
-                            <!-- <option value="recipes"> -->
+                            <option value="recipes">
                             </datalist>
 
                       </td><td> &nbsp;&nbsp; </td>
