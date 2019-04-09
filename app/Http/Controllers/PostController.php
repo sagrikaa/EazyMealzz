@@ -17,7 +17,10 @@ class PostController extends Controller
         
 
         $title = "Feed"; 
-        $posts= Post::all();
+       // $posts= Post::all();
+       //$posts=Post::where('title','Post Two')->get()
+        $posts=Post::orderby('created_at','desc')->paginate(2);
+
         return view('user.userfeed')->with('title',$title)->with('posts',$posts);
     }
 
@@ -50,7 +53,8 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+       $post= Post::find($id);
+       return view('post')->with('post',$post);
     }
 
     /**

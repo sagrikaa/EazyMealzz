@@ -43,6 +43,8 @@ Route::get('/userd', function () {
     return view('/user/user_display');
 });
 
-Route::get('/userfeed', function () {
-    return view('/user/userfeed');
+Route::get('/post', function () {
+    return view('post');
 });
+
+Route::get('/post/{id}','PostController@show');

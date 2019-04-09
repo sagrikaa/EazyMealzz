@@ -79,7 +79,7 @@
                         <div class="card-body">
                             <h2 class="card-title">{{$post->title}}</h2>
                             <p class="card-text">{{$post->description}}</p>
-                            <a href="#" class="btn btn-primary">Read More &rarr;</a>
+                        <a href="/post/{{$post->id}}" class="btn btn-primary">Read More &rarr;</a>
                         </div>
                         <div class="card-footer text-muted">
                             Posted on {{$post->created_at}} by
@@ -94,18 +94,26 @@
                             </div>
                         </div>
                     @endforeach
+                   <div class="pagination justify-content-center mb-4">
+                       <div class="page-item">
+                           
+                                {{$posts->links()}}
+                       
+                   </div>
+                </div>
                 @endif
                 
-        
-                <!-- Pagination -->
-                <ul class="pagination justify-content-center mb-4">
-                  <li class="page-item">
-                    <a class="page-link" href="#">&larr; Older</a>
-                  </li>
-                  <li class="page-item disabled">
-                    <a class="page-link" href="#">Newer &rarr;</a>
-                  </li>
-                </ul>
+         <!-- Pagination -->
+                       <ul class="pagination justify-content-center mb-4">
+                        <li class="page-item">
+                          <a class="page-link" href="#">&larr; Older</a>
+                        </li>
+                        <li class="page-item disabled">
+                          <a class="page-link" href="#">Newer &rarr;</a>
+                        </li>
+                      </ul>
+                      
+                
         
               </div>
             </div>
