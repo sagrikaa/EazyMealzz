@@ -24,12 +24,14 @@ Route::get('/contact', function () {
     return view('contactus');
 });
 
+Route::get('user_feed', 'PostController@index');
+
 Route::get('/feed', function () {
-    return view('userfeed');
+    return view('/user/user_feed');
 });
 
 Route::get('/profilesetting', function () {
-    return view('profileSettingsnew');
+    return view('/user/profileSettingsnew');
 });
 
 Route::get('/admin', function () {
@@ -39,4 +41,8 @@ Route::get('/admin', function () {
 Route::get('user', 'UserController@index');
 Route::get('/userd', function () {
     return view('/user/user_display');
+});
+
+Route::get('/userfeed', function () {
+    return view('/user/userfeed');
 });
