@@ -37,7 +37,7 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('/admin', function () {
     return view('admin');
-});
+})->middleware('is_admin');
 
 Route::get('user', 'UserController@index');
 Route::get('/userd', function () {
