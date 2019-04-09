@@ -19,6 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::resource('recipes', 'RecipeController');    
 
 Route::get('/contact', function () {
     return view('contactus');

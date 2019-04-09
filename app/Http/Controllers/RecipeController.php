@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RecipeController extends Controller
 {
@@ -23,7 +24,11 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        //
+        if (Auth::check()) {
+            return view('recipes.create');            
+        } else {
+            return redirect('/login');
+        }
     }
 
     /**
