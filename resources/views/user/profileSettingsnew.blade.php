@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-<div class="container">
+<div class="container mt-5 mb-5">
     <h1>Profile Settings</h1>
   	<hr>
 	<div class="row">

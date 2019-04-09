@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\Auth;
 
 class RecipeController extends Controller
 {
+
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -24,11 +29,7 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        if (Auth::check()) {
-            return view('recipes.create');            
-        } else {
-            return redirect('/login');
-        }
+        return view('recipes.create');            
     }
 
     /**

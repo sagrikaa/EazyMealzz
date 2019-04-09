@@ -41,12 +41,25 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Login/Register
+                    @guest
+                        Login/Register
+                    @endguest
+                    @auth
+                        {{ Auth::user()->name }}
+                    @endauth
                     </a>
+                    @guest
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ route('login') }}">Login</a>
-                    <a class="dropdown-item" href="{{ route('register') }}">Register</a>
+                        <a class="dropdown-item" href="{{ route('login') }}">Login</a>
+                        <a class="dropdown-item" href="{{ route('register') }}">Register</a>
                     </div>
+                    @endguest
+
+                    @auth
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ url('/logout') }}">Logout</a>
+                    </div>
+                    @endauth
                 </li>
             </ul>
         </div>

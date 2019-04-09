@@ -26,12 +26,14 @@ Route::get('/contact', function () {
 });
 
 Route::get('/feed', function () {
-    return view('userfeed');
+    return view('/user/userfeed');
 });
 
 Route::get('/profilesetting', function () {
-    return view('profileSettingsnew');
+    return view('/user/profileSettingsnew');
 });
+
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('/admin', function () {
     return view('admin');
