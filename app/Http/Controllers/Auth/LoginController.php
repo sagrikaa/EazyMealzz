@@ -27,7 +27,13 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/feed';
+    
+    public function redirectTo() {
+        if (Auth::user()->type === 'a') {
+            return '/admin';
+        }
+        return '/feed';
+    }
 
     /**
      * Create a new controller instance.
