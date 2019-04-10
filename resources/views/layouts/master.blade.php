@@ -10,9 +10,11 @@
 
     <title>EasyMealz</title>
 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href={{asset('css/app.css')}} rel="stylesheet">
     <!-- Bootstrap core CSS -->
     <link href={{asset('css/bootstrap.min.css')}} rel="stylesheet">
-    <!-- Custom styles for this template -->n
+    <!-- Custom styles for this template -->
     <link href={{asset('css/custom.css')}} rel="stylesheet">
     <link href={{asset('css/dashb.css')}} rel="stylesheet">
 </head>
@@ -39,12 +41,25 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Login/Register
+                    @guest
+                        Login/Register
+                    @endguest
+                    @auth
+                        {{ Auth::user()->name }}
+                    @endauth
                     </a>
+                    @guest
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ route('login') }}">Login</a>
-                    <a class="dropdown-item" href="{{ route('register') }}">Register</a>
+                        <a class="dropdown-item" href="{{ route('login') }}">Login</a>
+                        <a class="dropdown-item" href="{{ route('register') }}">Register</a>
                     </div>
+                    @endguest
+
+                    @auth
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ url('/logout') }}">Logout</a>
+                    </div>
+                    @endauth
                 </li>
             </ul>
         </div>
@@ -52,7 +67,16 @@
 </nav>
     
     @yield('content')
-    
+
+    @if(!Request::is('recipes/create', 'login', 'register'))
+    <a class="btn btn-warning floating-button float" href="/recipes/create">
+        <i class="fa fa-lg fa-plus mt-3" style="color: white"></i>
+    </a>
+    <div class="label-container">
+        <div class="label-text">Post a Recipe</div>
+        <i class="fa fa-play label-arrow"></i>
+    </div>
+    @endif
     <!-- Footer -->
     <footer class="py-5 bg-dark">
         <div class="container">
@@ -63,8 +87,7 @@
 
     <!-- Bootstrap core JavaScript -->
     <script src={{asset('js/jquery.min.js')}}></script>
-    <script src={{asset('js/bootstrap.bundle.min.js')}}></script>
-
+    <script src={{asset('js/bootstrap.min.js')}}></script>
 </body>
 
 </html>
