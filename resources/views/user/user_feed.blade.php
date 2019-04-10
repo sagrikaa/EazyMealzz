@@ -15,7 +15,7 @@
 
 
 
-<div class="container-fluid gedf-wrapper">
+<div class="container gedf-wrapper mt-5 mb-5">
   <div class="row">
       <div class="col-md-3">
           <div class="card">
@@ -106,8 +106,8 @@
           <!-- End Create Post /////-->
 
           <!--- \\\\\\\Post-->
-          @if(count($posts) > 0)
-          @foreach ($posts as $post)
+          
+          
 
           <div class="card gedf-card">
               <div class="card-header">
@@ -140,11 +140,11 @@
               <div class="card-body">
                   <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>10 min ago</div>
                   <a class="card-link" href="#">
-                      <h5 class="card-title">{{$post->title}}</h5>
+                      <h5 class="card-title">Title</h5>
                   </a>
 
                   <p class="card-text">
-                        {{$post->content}}
+                        Content
                   </p>
               </div>
               <div class="card-footer">
@@ -154,10 +154,9 @@
               </div>
           </div>
 
-          @endforeach
-          @else
-          <h1>No records</h1>
-          @endif
+
+
+
           <!-- Post /////-->
 
 

@@ -57,6 +57,7 @@
 
                     @auth
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ url('/feed') }}">Your Feed</a>
                         <a class="dropdown-item" href="{{ url('/logout') }}">Logout</a>
                     </div>
                     @endauth
