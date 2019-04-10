@@ -220,6 +220,7 @@ CREATE TABLE `recipes` (
   `recipe_servings` varchar(45) NOT NULL,
   `recipe_calories` varchar(45) DEFAULT NULL,
   `recipe_steps` varchar(1000) NOT NULL,
+  `recipe_status` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -270,8 +271,8 @@ CREATE TABLE `users` (
   `email` varchar(45) NOT NULL,
   `password` varchar(100) NOT NULL,
   `name` varchar(45) NOT NULL,
-  `user_type` varchar(1) NOT NULL DEFAULT 'u',
-  `user_status` varchar(10) NOT NULL DEFAULT 'active',
+  `user_type` varchar(1) NOT NULL DEFAULT 'U',
+  `user_status` varchar(10) NOT NULL DEFAULT 'Active',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
