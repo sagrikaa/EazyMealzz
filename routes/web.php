@@ -24,9 +24,9 @@ Route::resource('recipes', 'RecipeController');
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('/contact', function () {
-    return view('contactus');
-});
+Route::get('/contact','ContactMessageController@create');
+
+Route::post('/contact','ContactMessageController@store')->name('contact.store');
 
 Route::get('user_feed', 'PostController@index');
 
