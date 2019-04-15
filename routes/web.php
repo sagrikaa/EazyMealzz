@@ -23,6 +23,11 @@ Route::resource('recipes', 'RecipeController');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/about', function () {
+    return view('faq');
+});
+
+
 
 Route::get('/contact','ContactMessageController@create');
 
