@@ -1,10 +1,11 @@
 @extends('layouts.master')
 @section('content')
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" href=" {{asset('css/userprofile.css')}}">
 <!--Profile header -->
-<div class="main main-raised">
+<!--<div class=main main-raised>-->
+<div class="jumbotron">
 
         <div class="profile-content">
           
@@ -16,7 +17,7 @@
                                     <img src="{{asset('img/sagrika_profile_edit.jpg')}}"  alt="Circle Image" style="height: 250px;width: 250px;" class="img-raised rounded-circle img-fluid">
                                 </div>
                                 <div class="name">
-                                    <h3 class="title">Sagrika Aggarwal</h3>
+                                    <h3 class="title">Sagrika </h3>
                                   <h6>Food Reviewer</h6>
                                     <i class="fa fa-dribbble"></i></a>
                                     <a href="#pablo" class="btn btn-just-icon btn-link btn-twitter"><i class="fa fa-twitter"></i></a>
@@ -56,9 +57,12 @@
                                     </div>
                             </div>
                         </div>
-            </div>
+               </div>
         </div>
-        </div>
+    
+</div>
+
+<!--End profile header-->      
      <!-- Page Content -->
      <<div class="container">
     
@@ -68,7 +72,7 @@
               <div class="col-md-8">
         
                 <h1 class="my-4">Feed
-                  <small>Secondary Text(username)</small>
+                <small>SecondoryText</small>
                 </h1>
         
                 <!-- Blog Post -->
@@ -109,9 +113,12 @@
         
               </div>
             </div>
-        </div>
+    </div>
+
          <!-- Bootstrap core JavaScript -->
          <script src="{{asset('js/jquery.min.js')}}"></script>
          <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
          <script src="{{asset('js/userprofile.js')}}"></script>
+
+
         @endsection

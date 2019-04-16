@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
-class UserController extends Controller
+class CommentsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +13,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $title = "USERS"; 
-        $users= User::all();
-        return view('user.user_display')->with('title',$title)->with('users',$users);
+        //
     }
 
     /**

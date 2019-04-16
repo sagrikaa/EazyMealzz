@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\User;
 
 class PostController extends Controller
 {
@@ -19,11 +20,18 @@ class PostController extends Controller
         $title = "Feed"; 
        // $posts= Post::all();
        //$posts=Post::where('title','Post Two')->get()
+       
         $posts=Post::orderby('created_at','desc')->paginate(2);
-
-        return view('user.userfeed')->with('title',$title)->with('posts',$posts);
+        
+        return view('user.userprofile')->with('title',$title)->with('posts',$posts);
     }
 
+    public function userfeed(){
+        $title = "Feed"; 
+        $posts=Post::orderby('created_at','desc')->paginate(2);
+        return view('user.user_feed')->with('title',$title)->with('posts',$posts);
+
+    }
     /**
      * Show the form for creating a new resource.
      *

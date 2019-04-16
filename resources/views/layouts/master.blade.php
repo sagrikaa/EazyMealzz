@@ -57,6 +57,9 @@
 
                     @auth
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/userhome">My profile</a>
+                        <a class="dropdown-item" href="/userfeed">Feed</a>
+                        <a class="dropdown-item" href="/profilesetting">Settings</a>
                         <a class="dropdown-item" href="{{ url('/logout') }}">Logout</a>
                     </div>
                     @endauth
@@ -65,9 +68,9 @@
         </div>
     </div>
 </nav>
-    
+    <div>
     @yield('content')
-
+    </div>
     @if(!Request::is('recipes/create', 'login', 'register'))
     <a class="btn btn-warning floating-button float" href="/recipes/create">
         <i class="fa fa-lg fa-plus mt-3" style="color: white"></i>

@@ -32,7 +32,7 @@ class LoginController extends Controller
         if (Auth::user()->type === 'a') {
             return '/admin';
         }
-        return '/feed';
+        return '/admin';
     }
 
     /**
