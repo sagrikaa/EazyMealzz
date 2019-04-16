@@ -28,7 +28,7 @@ composer install
 
 #### Database Creation
 
-<p>Make sure MySQL is running on your local machine. Import the <strong>[SQL Dump](easymealz.sql)</strong> into your MySQL database.</p>
+<p>Make sure MySQL is running on your local machine. Import the <strong><a href="easymealz.sql">SQL Dump</a></strong> into your MySQL database.</p>
 <p>Create a file named <strong>.env</strong> file in the project root and copy the contents of [.env.example](.env.example) and add your database information to it. Your database info should look something like this.</p>
 
 <img src="env-example.png" align="center"/>
