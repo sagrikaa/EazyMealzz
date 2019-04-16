@@ -49,4 +49,9 @@ Route::get('/post', function () {
     return view('post');
 });
 
+Route::get('/logout', 'Auth\LoginController@logout');
+
 Route::get('/post/{id}','PostController@show');
+
+Route::get('/redirect', 'Auth\LoginController@redirectToProvider');
+Route::get('/callback', 'Auth\LoginController@handleProviderCallback');

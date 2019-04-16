@@ -64,6 +64,22 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="row mt-4 mb-4 offset-md-1">
+                            <div class="col-md-5">
+                                <hr>
+                            </div>
+                            <div class="col-md-1">
+                                <p>OR</p>
+                            </div>
+                            <div class="col-md-5">
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-8 offset-md-5">
+                                <a class="btn btn-danger" href="{{ url("/redirect") }}"><i class="fab fa-google"></i> Sign In</a>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
