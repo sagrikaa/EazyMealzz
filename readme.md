@@ -1,6 +1,7 @@
-<img src="public/img/logo.png" height="50" width="50" align="right" />
+<img src="public/img/logo.png" height="50" width="50" align="center" />
 
 # EasyMealz
+> A one stop shop for all the cooking enthusiasts
 
 ## Getting Started
 
