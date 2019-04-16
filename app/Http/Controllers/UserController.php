@@ -13,7 +13,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $title = "USERS"; 
+        $title = "USERS";
         $users= User::all();
         return view('user.user_display')->with('title',$title)->with('users',$users);
     }
@@ -81,6 +81,36 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function deactivate($id)
+    {
+      $user = User::find($id);
+      $user->user_status="Inactive";
+      $user->save();
+      return redirect()->route('userdisp');
+    }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function activate($id)
+    {
+      $user = User::find($id);
+      $user->user_status="Active";
+      $user->save();
+      return redirect()->route('userdisp');
+    }
+
+
+
+
 }

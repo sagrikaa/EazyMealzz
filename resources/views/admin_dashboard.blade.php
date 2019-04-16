@@ -1,21 +1,12 @@
-@extends('layouts.master')
-@section('content')
-<div><a class="mobilea" href="#">MENU</a></div>
+@extends('admin')
+@section('admincontent')
 
-      <div id="contain">
-        <div class="sidebar">
-          <ul id="nav">
-            <li><a class="selected">Dashboard</a></li>
-            <li><a href="../views/admin-user.php">Users</a></li>
-            <li><a href="../views/admin-recipe.php">Recipes</a></li>
-            <li><a href="#">Posts</a></li>
-            <li><a href="#">Subscriptions</a></li>
-          </ul>
-        </div>
-        <div class="content">
+
+        <div>
             <h1 style='color:#5C0A1D;'>Search</h1><br>
 
-          <form name="myForm" action="dashboard.php" method="post">
+          <form action="/project-kaizen-masterss/public/search" method="POST" role="search">
+            {{ csrf_field() }}
                   <table>
                     <tr>
                       <td><input type="text" name="keyword" placeholder="Type a keyword" value=""></td><td> &nbsp;&nbsp; </td>
@@ -34,9 +25,94 @@
 
                   </table><br><br>
               </form>
-            </div>
-            <!--End of Content-->
 
-        </div>
+              <?php
+                if(isset($_POST["search"]))  {
+                    $id=$_POST['scope'];
+                      if($id==""){
+                          echo "Please select scope";
+                        }
+                elseif($id=="recipes"){
+              ?>
+            <!--Search Results-->
+              <div class="row">
+                <div class="col-md-12">
+                  <br/>
+                    <h3 align="center">Recipes</h3>
+                      <br/>
+                      @if(isset($data))
+                      <table class="table table-bordered">
+                        <tr>
+                          <th>Recipe ID</th>
+                          <th>Name</th>
+                          <th>Description</th>
+                          <th>Servings</th>
+                          <th>Calories</th>
+                          <th>Steps</th>
+                          <th>Status</th>
+                        </tr>
+                        @foreach($data as $row)
+                        <tr>
+                            <td>{{$row['id']}}</td>
+                            <td>{{$row['recipe_name']}}</td>
+                            <td>{{$row['recipe_description']}}</td>
+                            <td>{{$row['recipe_servings']}}</td>
+                            <td>{{$row['recipe_calories']}}</td>
+                            <td>{{$row['recipe_steps']}}</td>
+                            <td>{{$row['recipe_status']}}</td>
+                        </tr>
+                        @endforeach
+                      </table>
+                      {!! $data->render() !!}
+                      @else
+
+                      @endif
+                </div>
+              </div>
+            <!--End of Results-->
+            <?php
+            }
+            elseif($id=="users"){
+            ?>
+
+            <!--Search Results-->
+              <div class="row">
+                <div class="col-md-12">
+                  <br/>
+                    <h3 align="center">Users</h3>
+                      <br/>
+                      @if(isset($data))
+                      <table class="table table-bordered">
+                        <tr>
+                          <th>User ID</th>
+                          <th>Name</th>
+                          <th>Email</th>
+                          <th>User Type</th>
+                          <th>Status</th>
+                        </tr>
+                        @foreach($data as $row)
+                        <tr>
+                            <td>{{$row['id']}}</td>
+                            <td>{{$row['name']}}</td>
+                            <td>{{$row['email']}}</td>
+                            <td>{{$row['type']}}</td>
+                            <td>{{$row['user_status']}}</td>
+
+                        </tr>
+                        @endforeach
+                      </table>
+                      {!! $data->render() !!}
+                      @else
+
+                      @endif
+                </div>
+              </div>
+            <!--End of Results-->
+            <?php
+            }
+            }
+            ?>
+          </div>
+            <!--End of Content-->
 
 @endsection
