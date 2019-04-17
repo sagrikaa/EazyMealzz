@@ -57,9 +57,13 @@
 
                     @auth
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+<<<<<<< HEAD
                         <a class="dropdown-item" href="/userhome">My profile</a>
                         <a class="dropdown-item" href="/userfeed">Feed</a>
                         <a class="dropdown-item" href="/profilesetting">Settings</a>
+=======
+                        <a class="dropdown-item" href="{{ url('/feed') }}">Your Feed</a>
+>>>>>>> 39164b7122a98f449f6f1acf87db0939119283a1
                         <a class="dropdown-item" href="{{ url('/logout') }}">Logout</a>
                     </div>
                     @endauth

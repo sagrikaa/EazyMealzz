@@ -15,7 +15,7 @@
 
 
 
-<div class="container-fluid gedf-wrapper">
+<div class="container gedf-wrapper mt-5 mb-5">
   <div class="row">
       <div class="col-md-3">
           <div class="card">
@@ -48,66 +48,10 @@
           </div>
       </div>
       <div class="col-md-6 gedf-main">
-        
-          <!--- Create Post-->
-         
-
-            <div class="card gedf-card">
-                <div class="card-header">
-                    <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="posts-tab" data-toggle="tab" href="#posts" role="tab" aria-controls="posts" aria-selected="true">Do
-                                a post</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="images-tab" data-toggle="tab" role="tab" aria-controls="images" aria-selected="false" href="#images">Images</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="card-body">
-                    <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
-                            <div class="form-group">
-                                <label class="sr-only" for="message">post</label>
-                                <textarea class="form-control" id="message" rows="3" placeholder="What are you thinking?"></textarea>
-                            </div>
-
-                        </div>
-                        <div class="tab-pane fade" id="images" role="tabpanel" aria-labelledby="images-tab">
-                            <div class="form-group">
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="customFile">
-                                    <label class="custom-file-label" for="customFile">Upload image</label>
-                                </div>
-                            </div>
-                            <div class="py-4"></div>
-                        </div>
-                    </div>
-                    <div class="btn-toolbar justify-content-between">
-                        <div class="btn-group">
-                            <button type="submit" class="btn btn-primary">share</button>
-                        </div>
-                        <div class="btn-group">
-                            <button id="btnGroupDrop1" type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false">
-                                <i class="fa fa-globe"></i>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop1">
-                                <a class="dropdown-item" href="#"><i class="fa fa-globe"></i> Public</a>
-                                <a class="dropdown-item" href="#"><i class="fa fa-users"></i> Friends</a>
-                                <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Just me</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-           
-          <!-- End Create Post /////-->
-
+            
           <!--- \\\\\\\Post-->
-          @if(count($posts) > 0)
-          @foreach ($posts as $post)
+          
+          
 
           <div class="card gedf-card">
               <div class="card-header">
@@ -140,11 +84,11 @@
               <div class="card-body">
                   <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>10 min ago</div>
                   <a class="card-link" href="#">
-                      <h5 class="card-title">{{$post->title}}</h5>
+                      <h5 class="card-title">Title</h5>
                   </a>
 
                   <p class="card-text">
-                        {{$post->content}}
+                        Content
                   </p>
               </div>
               <div class="card-footer">
@@ -154,10 +98,9 @@
               </div>
           </div>
 
-          @endforeach
-          @else
-          <h1>No records</h1>
-          @endif
+
+
+
           <!-- Post /////-->
 
 

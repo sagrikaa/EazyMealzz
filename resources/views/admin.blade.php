@@ -5,7 +5,7 @@
 <div id="contain">
   <div class="sidebar">
     <ul id="nav">
-    <li><a  href="#">Dashboard</a></li>
+      <li><a  href="admin_dashboard">Dashboard</a></li>
       <li><a  href="user">Users</a></li>
       <li><a href="#">Recipes</a></li>
       <li><a href="#">Posts</a></li>
