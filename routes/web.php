@@ -59,3 +59,5 @@ Route::get('/post', function () {
 
 
 Route::get('/post/{id}','PostController@show');
+
+Route::get('/storeComment','CommentController@store');

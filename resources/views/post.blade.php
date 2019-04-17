@@ -3,7 +3,7 @@
  <!-- Page Content -->
     
  <div class="container">
-        <a href="/user_feed" class="btn btn-med btn-default">Go Back</a>
+        <a href="/userhome" class="btn btn-med btn-default">Go Back</a>
         <div class="row">
     
           <!-- Post Content Column -->
@@ -50,21 +50,27 @@
             <div class="card my-4">
               <h5 class="card-header">Leave a Comment:</h5>
               <div class="card-body">
-                <form method="post" action="">
+                <form  action='/storeComment'>
                   <div class="form-group">
-                    <textarea class="form-control" rows="3" value=""></textarea>
+                    <textarea class="form-control" rows="3" value="" name="comment_box"></textarea>
                   </div>
+                  <input type="hidden" name="user_id" value="{{$post->user_id}}">
+                  <input type="hidden" name="post_id" value="{{$post->id}}">
+
                   <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
               </div>
             </div>
     
             <!-- Single Comment -->
+           
             <div class="media mb-4">
               <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
               <div class="media-body">
                 <h5 class="mt-0">Commenter Name</h5>
+                <p class="comment">
                 Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                </p>
               </div>
             </div>
     

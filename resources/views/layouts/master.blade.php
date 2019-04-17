@@ -69,17 +69,22 @@
     </div>
 </nav>
     <div>
-    @yield('content')
+        <br>
+        
+        @include('inc.messages')
+        
+        @yield('content')
     </div>
     @if(!Request::is('recipes/create', 'login', 'register'))
-    <a class="btn btn-warning floating-button float" href="/recipes/create">
-        <i class="fa fa-lg fa-plus mt-3" style="color: white"></i>
-    </a>
-    <div class="label-container">
-        <div class="label-text">Post a Recipe</div>
-        <i class="fa fa-play label-arrow"></i>
-    </div>
+        <a class="btn btn-warning floating-button float" href="/recipes/create">
+            <i class="fa fa-lg fa-plus mt-3" style="color: white"></i>
+        </a>
+            <div class="label-container">
+                <div class="label-text">Post a Recipe</div>
+                <i class="fa fa-play label-arrow"></i>
+            </div>
     @endif
+
     <!-- Footer -->
     <footer class="py-5 bg-dark">
         <div class="container">

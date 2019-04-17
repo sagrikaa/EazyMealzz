@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\User;
-
+use App\Http\Controllers\CommentController;
 class PostController extends Controller
 {
     /**
@@ -22,7 +22,7 @@ class PostController extends Controller
        //$posts=Post::where('title','Post Two')->get()
        
         $posts=Post::orderby('created_at','desc')->paginate(2);
-        
+       
         return view('user.userprofile')->with('title',$title)->with('posts',$posts);
     }
 
@@ -62,6 +62,7 @@ class PostController extends Controller
     public function show($id)
     {
        $post= Post::find($id);
+       //$comments = CommentController.showPostComments($post->id);
        return view('post')->with('post',$post);
     }
 

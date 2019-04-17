@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Comment;
 
-class CommentsController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -12,8 +13,9 @@ class CommentsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    { 
+        
+        
     }
 
     /**
@@ -34,7 +36,19 @@ class CommentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'comment_box'=>'required'
+        ]);
+
+        $comment = new Comment;
+        $comment->comment_string = $request->input('comment_box');
+        $comment->user_id = $request->input('user_id');
+        $comment->post_id = $request->input('post_id');
+        $post_id=$request->input('post_id');
+        $post_link='/post/{{post_id}}';
+        $comment->save();
+
+        return redirect()->back();
     }
 
     /**
@@ -45,9 +59,13 @@ class CommentsController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
+    public function showpPostComments($post_id){
+        $comments=Post::where('post_id',$post_id)->get();
+        return redirect()->back()->with('comments',$comments);
+    }
     /**
      * Show the form for editing the specified resource.
      *
