@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Recipe;
+use Excel;
+use App\Exports\RecipesExport;
 
 class RecipeController extends Controller
 {
@@ -19,7 +22,18 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        //
+      $title = "RECIPES";
+      $recipes= Recipe::orderby('id','asc')->paginate(2);
+      return view('recipes.recipe_display')->with('title',$title)->with('recipes',$recipes);
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * Export to Excel Link
+     */
+    public function export()
+    {
+        return Excel::download(new RecipesExport, 'recipes.xlsx');
     }
 
     /**
@@ -29,7 +43,7 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        return view('recipes.create');            
+        return view('recipes.create');
     }
 
     /**
@@ -86,5 +100,31 @@ class RecipeController extends Controller
     public function destroy($id)
     {
         //
+    }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function reject($id)
+    {
+      $recipe = Recipe::find($id);
+      $recipe->recipe_status="Rejected";
+      $recipe->save();
+      return redirect()->route('recipedisp');
+    }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function approve($id)
+    {
+      $recipe = Recipe::find($id);
+      $recipe->recipe_status="Approved";
+      $recipe->save();
+      return redirect()->route('recipedisp');
     }
 }
