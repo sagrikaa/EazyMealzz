@@ -51,9 +51,11 @@ Route::get('/feed', function () {
 });
 
 //User Profile Settings Route
-Route::get('/profilesetting', function () {
+Route::get('/profilesettings', function () {
     return view('/user/profile_settings_new');
-});
+})->middleware('auth');
+
+Route::get('/profilesetting','UserController@user_settings')->middleware('auth');
 
 //Admin Home
 Route::get('/admin', function () {

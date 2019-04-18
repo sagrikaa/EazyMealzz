@@ -2421,7 +2421,7 @@ a.btn.disabled, fieldset:disabled a.btn {
 }
 
 .btn-warning {
-    color: #212529;
+    color: #fff;
     background-color: #ffc107;
     border-color: #ffc107
 }

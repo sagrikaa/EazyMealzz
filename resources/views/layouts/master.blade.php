@@ -57,36 +57,32 @@
 
                     @auth
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-<<<<<<< HEAD
                         <a class="dropdown-item" href="/userhome">My profile</a>
                         <a class="dropdown-item" href="/userfeed">Feed</a>
                         <a class="dropdown-item" href="/profilesetting">Settings</a>
-=======
-                        <a class="dropdown-item" href="{{ url('/feed') }}">Your Feed</a>
->>>>>>> 39164b7122a98f449f6f1acf87db0939119283a1
                         <a class="dropdown-item" href="{{ url('/logout') }}">Logout</a>
                     </div>
                     @endauth
                 </li>
             </ul>
-        </div>
+        </div> 
     </div>
 </nav>
-    <div>
+    
         <br>
-        
+        <!--Error Messages-->
         @include('inc.messages')
-        
+
         @yield('content')
-    </div>
+    
     @if(!Request::is('recipes/create', 'login', 'register'))
         <a class="btn btn-warning floating-button float" href="/recipes/create">
             <i class="fa fa-lg fa-plus mt-3" style="color: white"></i>
         </a>
-            <div class="label-container">
-                <div class="label-text">Post a Recipe</div>
-                <i class="fa fa-play label-arrow"></i>
-            </div>
+        <div class="label-container">
+            <div class="label-text">Post a Recipe</div>
+             <i class="fa fa-play label-arrow"></i>
+        </div>
     @endif
 
     <!-- Footer -->

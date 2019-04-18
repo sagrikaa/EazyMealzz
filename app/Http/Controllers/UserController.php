@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -13,12 +14,29 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+ 
     public function index()
     {
         $title = "USERS";
         $users= User::all();
         return view('user.user_display')->with('title',$title)->with('users',$users);
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+    public function user_settings()
+    {
+       
+        
+            $user=Auth::user();
+            return view('user.profile_settings_new')->with('user',$user);
+        
+    }
+
 
     /**
      * Show the form for creating a new resource.
