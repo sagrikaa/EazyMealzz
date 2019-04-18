@@ -63,6 +63,8 @@ Route::get('/admin', function () {
 //Admin Home->User display
 
 Route::get('user', 'UserController@index')->name('userdisp');
+Route::get('/user/export', 'UserController@export')->name('user.export');
+
 Route::get('/userd', function () {
     return view('/user/user_display');
 });
