@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Excel;
+use App\Exports\UsersExport;
 
 class UserController extends Controller
 {
@@ -13,12 +15,21 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $title = "USERS";
-        $users= User::all();
-        return view('user.user_display')->with('title',$title)->with('users',$users);
-    }
+     public function index()
+     {
+         $title = "USERS";
+         $users= User::orderby('id','asc')->paginate(8);
+         return view('user.user_display')->with('title',$title)->with('users',$users);
+     }
+     /**
+      * Display a listing of the resource.
+      *
+      * Export to Excel Link
+      */
+     public function export()
+     {
+         return Excel::download(new UsersExport, 'users.xlsx');
+     }
 
     /**
      * Show the form for creating a new resource.
