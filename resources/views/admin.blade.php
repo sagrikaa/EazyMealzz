@@ -8,8 +8,7 @@
       <li><a  href="admin_dashboard">Dashboard</a></li>
       <li><a  href="user">Users</a></li>
       <li><a href="recipe">Recipes</a></li>
-      <li><a href="#">Posts</a></li>
-      <li><a href="#">Subscriptions</a></li>
+      <li><a href="postadmin">Posts</a></li>
     </ul>
   </div>
   <div class="content">
