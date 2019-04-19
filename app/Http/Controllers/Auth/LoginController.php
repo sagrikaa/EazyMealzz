@@ -86,6 +86,6 @@ class LoginController extends Controller
             $newUser->save();
             auth()->login($newUser, true);
         }
-        return redirect()->to('/feed');
+        return redirect()->to('/userfeed');
     }
 }

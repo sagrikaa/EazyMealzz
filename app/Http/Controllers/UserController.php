@@ -31,10 +31,14 @@ class UserController extends Controller
     public function user_settings()
     {
        
-        
+        if(Auth::check()){
             $user=Auth::user();
             return view('user.profile_settings_new')->with('user',$user);
-        
+        }
+        else
+        {
+            return view('auth.login');
+        }
     }
 
 
@@ -90,7 +94,53 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+       
+        $request->validate([
+
+            'user_avatar'=>'image|nullable|max:1999',
+            'user_name'=>'required'
+            
+        ]);
+        return $request;
+        //Image File Handing
+        if($request->hasFile('user_avatar')){
+            return "success";
+            //getting filename with extension
+            $fileWithExt = $request->file('user_avatar')->getClientOriginalName();
+
+            //getting just the file name without ext
+
+            $filenameWithoutExt = pathinfo($fileWithExt,PATHINFO_FILENAME);
+
+            //getting just the extension
+
+            $Ext = $request->file('user_avatar')->getClientOriginalExtension();
+
+            //file name to store
+
+            $filenameToStore = $fileWithExt._.time().".".$Ext;
+
+            //path
+            $path = $request->file('user_avatar')->storeAs('public/user_avatar',$filenameToStore);
+        }
+        else{
+            $filenameToStore = "defaultavatar.jpg";
+        }
+
+        
+
+        $user = User::find($id);
+        $user->name = $request->input('user_name');
+        $user->email = $request->input('user_email');
+        $user->user_title = $request->input('user_title');
+        $user->user_description  =$request->input('user_description');
+        $user->avatar=$request->input('user_avatar');
+        // $post_id=$request->input('post_id');
+        // $post_link='/post/{{post_id}}';
+        $user->save();
+
+        return "success";
     }
 
     /**
