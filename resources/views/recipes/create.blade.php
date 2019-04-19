@@ -25,6 +25,14 @@
             <input type="text" class="form-control" name="calories" id="exampleInputPassword1" >
         </div>
         <div class="form-group">
+            <label for="exampleFormControlSelect1">Ingredients</label>
+            <select class="form-control" id="ingredients-dropdown" multiple name="ingredients[]">
+                @foreach($ingredients as $ingredient)
+                <option value="{{ $ingredient->id }}">{{ $ingredient->name }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="form-group">
             <label for="exampleFormControlTextarea1">Description</label>
             <textarea class="form-control" id="exampleFormControlTextarea1" name="description" rows="5"></textarea>
         </div>

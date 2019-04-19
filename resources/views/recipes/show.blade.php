@@ -11,6 +11,14 @@
                 <h5>Serving Size</h4>
                 <p>{{ $recipe->servings }}</p>
             </div>
+            <div class="col-md-3 mt-2 mb-4">
+                <h5>Ingredients</h4>
+                <ul class="list-group mt-3">
+                    @foreach($recipe->ingredients as $ingredient)
+                    <li class="list-group-item">{{ $ingredient->name }}</li>
+                    @endforeach
+                </ul>
+            </div>
             <div class="col-md-12">
                 <h5>Calories</h4>
                 <p>{{ $recipe->calories }}</p>

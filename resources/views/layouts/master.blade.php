@@ -17,6 +17,7 @@
     <!-- Custom styles for this template -->
     <link href={{asset('css/custom.css')}} rel="stylesheet">
     <link href={{asset('css/dashb.css')}} rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-multiselect.css') }}" type="text/css">
 </head>
 
 <body>
@@ -98,7 +99,18 @@
 
     <!-- Bootstrap core JavaScript -->
     <script src={{asset('js/jquery.min.js')}}></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap-multiselect.js') }}"></script>
     <script src={{asset('js/bootstrap.min.js')}}></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#ingredients-dropdown').multiselect({
+            includeSelectAllOption: true,
+            buttonWidth: 250,
+            enableFiltering: true
+        });
+        });
+</script>
 </body>
 
 </html>

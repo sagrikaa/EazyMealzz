@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Recipe;
+use App\Ingredient;
 use Excel;
 use App\Exports\RecipesExport;
 
@@ -45,7 +46,8 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        return view('recipes.create');
+        $ingredients = Ingredient::all();
+        return view('recipes.create')->with('ingredients', $ingredients);
     }
 
     /**
@@ -60,6 +62,7 @@ class RecipeController extends Controller
             'name' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'steps' => 'required',
+            'ingredients' => 'required',
         ]);
 
         $recipe = new Recipe();
@@ -70,6 +73,10 @@ class RecipeController extends Controller
         $recipe->steps = $request->input('steps');
         $recipe->user()->associate(Auth::user());
         $recipe->save();
+        foreach ($request->input('ingredients') as $ingredient_id) {
+            $ingredient = Ingredient::find($ingredient_id);
+            $recipe->ingredients()->save($ingredient);
+        }
 
         $imagePath = $request->file('image')->storeAs('recipes', 'recipe-'.$recipe->id.'.'.$request->file('image')->getClientOriginalExtension());
         
