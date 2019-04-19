@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Intervention\Image\Facades\Image;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Recipe;
@@ -25,7 +26,7 @@ class RecipeController extends Controller
     {
       $title = "RECIPES";
       $recipes= Recipe::orderby('id','asc')->paginate(2);
-      return view('recipes.recipe_display')->with('title',$title)->with('recipes',$recipes);
+      return view('recipes.index')->with('title',$title)->with('recipes',$recipes);
     }
     /**
      * Display a listing of the resource.
@@ -67,6 +68,7 @@ class RecipeController extends Controller
         $recipe->servings = $request->input('serving_size');
         $recipe->calories = $request->input('calories');
         $recipe->steps = $request->input('steps');
+        $recipe->user()->associate(Auth::user());
         $recipe->save();
 
         $imagePath = $request->file('image')->storeAs('recipes', 'recipe-'.$recipe->id.'.'.$request->file('image')->getClientOriginalExtension());
@@ -75,8 +77,6 @@ class RecipeController extends Controller
         Storage::put($imagePath,$image);
 
         $recipe->image_url = $imagePath;
-
-        $recipe->user()->associate(Auth::user());
 
         $recipe->save();
 
