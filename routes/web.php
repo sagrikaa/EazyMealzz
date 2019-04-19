@@ -67,6 +67,10 @@ Route::get('/admin', function () {
 //Admin Home->User display
 
 Route::get('user', 'UserController@index')->name('userdisp');
+Route::get('/user/export', 'UserController@export')->name('user.export');
+Route::get('recipe', 'RecipeController@index')->name('recipedisp');
+Route::get('/recipe/export', 'RecipeController@export')->name('recipe.export');
+
 Route::get('/userd', function () {
     return view('/user/user_display');
 });
@@ -93,6 +97,8 @@ Route::get('/admin_dashboard', function () {
 });
 Route::post('/user/{id}','UserController@deactivate')->name('deact');
 Route::post('/users/{id}','UserController@activate')->name('act');
+Route::post('/recipe/{id}','RecipeController@reject')->name('deactrecipe');
+Route::post('/recipes/{id}','RecipeController@approve')->name('actrecipe');
 
 Route::any('/search', function(){
   $keyword = Input::get('keyword');
@@ -135,8 +141,10 @@ Route::any('/search', function(){
             return view('admin_dashboard')->withMessage("No Results Found");
       }
       else{
-        $data=User::paginate(5);
-        return view('admin_dashboard')->withData($data);
+        $title = "USERS";
+        $data=User::orderby('id','asc')->paginate(5);
+        //return view('admin_dashboard')->withData($data);
+        return view('admin_dashboard')->with('title',$title)->with('data',$data);
       }
 
     }

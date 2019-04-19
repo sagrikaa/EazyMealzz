@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Excel;
+use App\Exports\UsersExport;
 
 class UserController extends Controller
 {
@@ -21,12 +23,19 @@ class UserController extends Controller
         $users= User::all();
         return view('user.user_display')->with('title',$title)->with('users',$users);
     }
+    
+     /**
+      * Display a listing of the resource.
+      *
+      * Export to Excel Link
+      */
+      
+     public function export()
+     {
+         return Excel::download(new UsersExport, 'users.xlsx');
+     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
 
     public function user_settings()
     {
