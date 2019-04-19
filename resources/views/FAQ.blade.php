@@ -1,5 +1,7 @@
 @extends('layouts.master')
 @section('content')
+
+    <center><h1 class="entry-title">Frequently Asked Questions</h1></center>
 <div class="container " style="padding-top:50px;padding-bottom:300px;">
     <div class="panel-group" id="faqAccordion">
         <div class="panel panel-default ">
