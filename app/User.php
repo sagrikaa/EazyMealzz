@@ -50,4 +50,16 @@ class User extends Authenticatable
     public function isAdmin()    {        
         return $this->type === self::ADMIN_TYPE;    
     }
+
+    public function recipes() {
+        return $this->hasMany('App\Recipe');
+    }
+
+    public function posts() {
+        return $this->hasMany('App\Post');
+    }
+
+    public function comments() {
+        return $this->hasMany('App\Comment');
+    }
 }

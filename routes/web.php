@@ -39,7 +39,7 @@ Route::get('/userhome', 'PostController@index');
 //User Feed Page
 Route::get('userfeed', 'PostController@userfeed');
 
-Route::resource('recipes', 'RecipeController');
+Route::resource('recipes', 'RecipeController')->middleware('auth');
 
 Route::get('/about', function () {
     return view('faq');
@@ -48,7 +48,7 @@ Route::get('/about', function () {
 
 Route::get('/feed', function () {
     return view('/user/user_feed');
-});
+})->middleware('auth');
 
 //User Profile Settings Route
 Route::get('/profilesetting', function () {
