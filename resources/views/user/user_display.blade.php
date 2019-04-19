@@ -1,5 +1,9 @@
 @extends('admin')
 @section('admincontent')
+
+<div align="right">
+  <a href="{{ route('user.export')}}" class="btn btn-info mb-4">Export to excel</a>
+</div>
     <!--User Table-->
     <table class="table">
             <thead class="thead-dark">
@@ -57,5 +61,13 @@
 
 </tbody>
 </table>
+<!-- Pagination -->
+<div class="pagination justify-content-center mb-4">
+  <div>
+
+           {{$users->links( "pagination::bootstrap-4")}}
+
+</div>
+</div>
 
 @endsection

@@ -7,7 +7,7 @@
     <ul id="nav">
       <li><a  href="admin_dashboard">Dashboard</a></li>
       <li><a  href="user">Users</a></li>
-      <li><a href="#">Recipes</a></li>
+      <li><a href="recipe">Recipes</a></li>
       <li><a href="#">Posts</a></li>
       <li><a href="#">Subscriptions</a></li>
     </ul>
