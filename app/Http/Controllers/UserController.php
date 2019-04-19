@@ -16,30 +16,30 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
- 
+
     public function index()
     {
         $title = "USERS";
-        $users= User::all();
+        $users= User::orderby('id','asc')->paginate(8);
         return view('user.user_display')->with('title',$title)->with('users',$users);
     }
-    
+
      /**
       * Display a listing of the resource.
       *
       * Export to Excel Link
       */
-      
+
      public function export()
      {
          return Excel::download(new UsersExport, 'users.xlsx');
      }
 
-    
+
 
     public function user_settings()
     {
-       
+
         if(Auth::check()){
             $user=Auth::user();
             return view('user.profile_settings_new')->with('user',$user);
@@ -104,12 +104,12 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
 
-       
+
         $request->validate([
 
             'user_avatar'=>'image|nullable|max:1999',
             'user_name'=>'required'
-            
+
         ]);
         return $request;
         //Image File Handing
@@ -137,7 +137,7 @@ class UserController extends Controller
             $filenameToStore = "defaultavatar.jpg";
         }
 
-        
+
 
         $user = User::find($id);
         $user->name = $request->input('user_name');
