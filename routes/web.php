@@ -95,6 +95,7 @@ Route::get('/admin_dashboard', function () {
 Route::post('/user/{id}','UserController@deactivate')->name('deact');
 Route::post('/users/{id}','UserController@activate')->name('act');
 
+
 Route::any('/search', function(){
   $keyword = Input::get('keyword');
   $scope = Input::get('scope');

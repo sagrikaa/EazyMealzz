@@ -55,7 +55,7 @@
                             @endif
                         </div>
                     </div>
-                    
+
                     <div class="form-group">
                         <label>Message</label>
                         <div class="input-group mb-2 mb-sm-0">
@@ -86,7 +86,7 @@
 
             <!--Google map-->
             <div class="mb-4">
-               
+
             </div>
 
             <!--Buttons-->
@@ -94,7 +94,7 @@
                 <div class="col-md-4">
                     <a class="bg-primary px-3 py-2 rounded text-white mb-2 d-inline-block"><i class="fa fa-map-marker"></i></a>
                     <p>Winterfell<br> South of the wall </p>
-                    
+
                 </div>
 
                 <div class="col-md-4">

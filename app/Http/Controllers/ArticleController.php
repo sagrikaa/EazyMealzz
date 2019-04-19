@@ -23,4 +23,6 @@ class ArticleController extends Controller
     {
         return view('single', ['article' => Article::find($id)]);
     }
+
+
 }
