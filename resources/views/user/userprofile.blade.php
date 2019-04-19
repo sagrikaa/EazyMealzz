@@ -128,9 +128,6 @@
             </div>
      </div>
 
-<<<<<<< HEAD
-@endsection
-=======
 </div>
          <!-- Bootstrap core JavaScript -->
          <script src="{{asset('js/jquery.min.js')}}"></script>
@@ -142,4 +139,3 @@
     
     
   @endsection
->>>>>>> master
