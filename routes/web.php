@@ -70,6 +70,9 @@ Route::get('user', 'UserController@index')->name('userdisp');
 Route::get('/user/export', 'UserController@export')->name('user.export');
 Route::get('recipe', 'RecipeController@index')->name('recipedisp');
 Route::get('/recipe/export', 'RecipeController@export')->name('recipe.export');
+Route::get('/postadmin', 'PostController@indexadmin')->name('postdisp');
+Route::get('/postadmin/export', 'PostController@export')->name('post.export');
+Route::post('/postadmin/{id}','PostController@destroy')->name('destroypost');
 
 Route::get('/userd', function () {
     return view('/user/user_display');
