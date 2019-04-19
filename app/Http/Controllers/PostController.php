@@ -7,6 +7,8 @@ use App\Post;
 use App\User;
 use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Auth;
+use Excel;
+use App\Exports\PostsExport;
 
 class PostController extends Controller
 {
@@ -15,26 +17,26 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
+
 
     public function index()
     {
-        
+
         $user = Auth::user();
-        
-        $title = "Profile"; 
+
+        $title = "Profile";
        // $posts= Post::all();
        //$posts=Post::where('title','Post Two')->get()
        //$posts=Post::orderby('created_at','desc')->paginate(2);
-        
+
        $user_id= $user->id;
-        
+
         $posts=Post::orderby('created_at','desc')->where('user_id',$user_id)->paginate(2);
         return view('user.userprofile')->with('title',$title)->with('posts',$posts)->with('currentuser',$user);
     }
 
     public function userfeed(){
-        $title = "Feed"; 
+        $title = "Feed";
         $posts=Post::orderby('created_at','desc')->paginate(2);
         return view('user.user_feed')->with('title',$title)->with('posts',$posts);
 
@@ -70,7 +72,7 @@ class PostController extends Controller
     {
        $post= Post::find($id);
 
-       //grabbing username from the post 
+       //grabbing username from the post
        $username= USER::find($post->user_id)->name;
        //$comments = CommentController.showPostComments($post->id);
        return view('post')->with('post',$post)->with('user',$username);
@@ -107,6 +109,31 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $post = Post::find($id);
+      $post->delete();
+      return redirect()->route('postdisp');
     }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+    public function indexadmin()
+    {
+        $title = "POSTS";
+        $posts= Post::orderby('id','asc')->paginate(1);
+        return view('post_admin')->with('title',$title)->with('posts',$posts);
+    }
+
+     /**
+      * Display a listing of the resource.
+      *
+      * Export to Excel Link
+      */
+
+     public function export()
+     {
+         return Excel::download(new PostsExport, 'posts.xlsx');
+     }
 }
