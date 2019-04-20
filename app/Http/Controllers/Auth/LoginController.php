@@ -33,11 +33,7 @@ class LoginController extends Controller
         if (Auth::user()->type === 'a') {
             return '/admin';
         }
-<<<<<<< HEAD
         return '/feed';
-=======
-        return '/admin';
->>>>>>> 3ac4c5ea334ca08bb4a668b148a9e1dfa67ed556
     }
 
     /**
@@ -90,10 +86,6 @@ class LoginController extends Controller
             $newUser->save();
             auth()->login($newUser, true);
         }
-<<<<<<< HEAD
         return redirect()->to('/userfeed');
-=======
-        return redirect()->to('/feed');
->>>>>>> 3ac4c5ea334ca08bb4a668b148a9e1dfa67ed556
     }
 }

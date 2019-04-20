@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-<<<<<<< HEAD
 use Illuminate\Support\Facades\Auth;
 use Excel;
 use App\Exports\UsersExport;
@@ -22,17 +21,11 @@ class UserController extends Controller
   {
       
   }
-=======
-
-class UserController extends Controller
-{
->>>>>>> 3ac4c5ea334ca08bb4a668b148a9e1dfa67ed556
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-<<<<<<< HEAD
 
     public function indexadmin()
     {
@@ -68,15 +61,6 @@ class UserController extends Controller
     }
 
 
-=======
-    public function index()
-    {
-        $title = "USERS";
-        $users= User::all();
-        return view('user.user_display')->with('title',$title)->with('users',$users);
-    }
-
->>>>>>> 3ac4c5ea334ca08bb4a668b148a9e1dfa67ed556
     /**
      * Show the form for creating a new resource.
      *
@@ -129,7 +113,6 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-<<<<<<< HEAD
 
 
         $request->validate([
@@ -177,9 +160,6 @@ class UserController extends Controller
         $user->save();
 
         return "success";
-=======
-        //
->>>>>>> 3ac4c5ea334ca08bb4a668b148a9e1dfa67ed556
     }
 
     /**

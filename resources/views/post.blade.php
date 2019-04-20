@@ -3,13 +3,9 @@
  <!-- Page Content -->
     
  <div class="container">
-<<<<<<< HEAD
         <span>
         <input  class="btn btn-warning" value="Go Back" onclick="history.back(-1)" />
         </span>
-=======
-        <a href="/userhome" class="btn btn-med btn-default">Go Back</a>
->>>>>>> 3ac4c5ea334ca08bb4a668b148a9e1dfa67ed556
         <div class="row">
     
           <!-- Post Content Column -->
@@ -21,11 +17,7 @@
             <!-- Author -->
             <p class="lead">
               by
-<<<<<<< HEAD
               <a href="#">{{$user}}</a>
-=======
-              <a href="#">{{$post->user_id}}</a>
->>>>>>> 3ac4c5ea334ca08bb4a668b148a9e1dfa67ed556
             </p>
     
             <hr>
@@ -36,11 +28,7 @@
             <hr>
     
             <!-- Preview Image -->
-<<<<<<< HEAD
             <img class="img-fluid rounded" src="{{$post->img_url}}" alt="">
-=======
-            <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">
->>>>>>> 3ac4c5ea334ca08bb4a668b148a9e1dfa67ed556
     
             <hr>
     

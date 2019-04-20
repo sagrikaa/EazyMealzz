@@ -17,10 +17,7 @@
     <!-- Custom styles for this template -->
     <link href={{asset('css/custom.css')}} rel="stylesheet">
     <link href={{asset('css/dashb.css')}} rel="stylesheet">
-<<<<<<< HEAD
     <link rel="stylesheet" href="{{ asset('css/bootstrap-multiselect.css') }}" type="text/css">
-=======
->>>>>>> 3ac4c5ea334ca08bb4a668b148a9e1dfa67ed556
 </head>
 
 <body>
@@ -38,12 +35,9 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-<<<<<<< HEAD
                     <a class="nav-link" href="{{ route('recipes.index') }}">Browse Recipes</a>
                 </li>
                 <li class="nav-item">
-=======
->>>>>>> 3ac4c5ea334ca08bb4a668b148a9e1dfa67ed556
                     <a class="nav-link" href="/about">About</a>
                 </li>
                 <li class="nav-item">
@@ -67,19 +61,13 @@
 
                     @auth
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-<<<<<<< HEAD
                         <a class="dropdown-item" href="/userhome">My profile</a>
                         <a class="dropdown-item" href="/userfeed">Feed</a>
                         <a class="dropdown-item" href="/profilesetting">Settings</a>
-=======
-<<<<<<< HEAD
                         <a class="dropdown-item" href="/userhome">My profile</a>
                         <a class="dropdown-item" href="/userfeed">Feed</a>
                         <a class="dropdown-item" href="/profilesetting">Settings</a>
-=======
                         <a class="dropdown-item" href="{{ url('/feed') }}">Your Feed</a>
->>>>>>> 39164b7122a98f449f6f1acf87db0939119283a1
->>>>>>> 3ac4c5ea334ca08bb4a668b148a9e1dfa67ed556
                         <a class="dropdown-item" href="{{ url('/logout') }}">Logout</a>
                     </div>
                     @endauth
@@ -88,7 +76,6 @@
         </div>
     </div>
 </nav>
-<<<<<<< HEAD
 
 
         <!--Error Messages-->
@@ -104,22 +91,18 @@
         
         @yield('content')
     </div>
->>>>>>> 3ac4c5ea334ca08bb4a668b148a9e1dfa67ed556
     @if(!Request::is('recipes/create', 'login', 'register'))
         <a class="btn btn-warning floating-button float" href="/recipes/create">
             <i class="fa fa-lg fa-plus mt-3" style="color: white"></i>
         </a>
-<<<<<<< HEAD
         <div class="label-container">
             <div class="label-text">Post a Recipe</div>
              <i class="fa fa-play label-arrow"></i>
         </div>
-=======
             <div class="label-container">
                 <div class="label-text">Post a Recipe</div>
                 <i class="fa fa-play label-arrow"></i>
             </div>
->>>>>>> 3ac4c5ea334ca08bb4a668b148a9e1dfa67ed556
     @endif
 
     <!-- Footer -->
