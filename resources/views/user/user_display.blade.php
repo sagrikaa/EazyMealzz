@@ -1,6 +1,5 @@
 @extends('admin')
 @section('admincontent')
-<<<<<<< HEAD
 
 <table class="table">
   <tr>
@@ -12,8 +11,6 @@
 </table>
 
 
-=======
->>>>>>> 3ac4c5ea334ca08bb4a668b148a9e1dfa67ed556
     <!--User Table-->
     <table class="table">
             <thead class="thead-dark">
