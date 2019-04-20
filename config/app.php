@@ -174,11 +174,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-<<<<<<< HEAD
         Maatwebsite\Excel\ExcelServiceProvider::class,
-=======
-
->>>>>>> 3ac4c5ea334ca08bb4a668b148a9e1dfa67ed556
     ],
 
     /*
@@ -230,10 +226,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-<<<<<<< HEAD
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
-=======
->>>>>>> 3ac4c5ea334ca08bb4a668b148a9e1dfa67ed556
     ],
 
 ];
