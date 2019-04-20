@@ -50,6 +50,7 @@ class User extends Authenticatable
     public function isAdmin()    {        
         return $this->type === self::ADMIN_TYPE;    
     }
+<<<<<<< HEAD
 
     public function recipes() {
         return $this->hasMany('App\Recipe');
@@ -62,4 +63,6 @@ class User extends Authenticatable
     public function comments() {
         return $this->hasMany('App\Comment');
     }
+=======
+>>>>>>> 3ac4c5ea334ca08bb4a668b148a9e1dfa67ed556
 }

@@ -6,10 +6,13 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\User;
 use App\Http\Controllers\CommentController;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\Auth;
 use Excel;
 use App\Exports\PostsExport;
 
+=======
+>>>>>>> 3ac4c5ea334ca08bb4a668b148a9e1dfa67ed556
 class PostController extends Controller
 {
     /**
@@ -17,6 +20,7 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+<<<<<<< HEAD
 
 
     public function index()
@@ -37,6 +41,23 @@ class PostController extends Controller
 
     public function userfeed(){
         $title = "Feed";
+=======
+    public function index()
+    {
+        
+
+        $title = "Feed"; 
+       // $posts= Post::all();
+       //$posts=Post::where('title','Post Two')->get()
+       
+        $posts=Post::orderby('created_at','desc')->paginate(2);
+       
+        return view('user.userprofile')->with('title',$title)->with('posts',$posts);
+    }
+
+    public function userfeed(){
+        $title = "Feed"; 
+>>>>>>> 3ac4c5ea334ca08bb4a668b148a9e1dfa67ed556
         $posts=Post::orderby('created_at','desc')->paginate(2);
         return view('user.user_feed')->with('title',$title)->with('posts',$posts);
 
@@ -71,11 +92,16 @@ class PostController extends Controller
     public function show($id)
     {
        $post= Post::find($id);
+<<<<<<< HEAD
 
        //grabbing username from the post
        $username= USER::find($post->user_id)->name;
        //$comments = CommentController.showPostComments($post->id);
        return view('post')->with('post',$post)->with('user',$username);
+=======
+       //$comments = CommentController.showPostComments($post->id);
+       return view('post')->with('post',$post);
+>>>>>>> 3ac4c5ea334ca08bb4a668b148a9e1dfa67ed556
     }
 
     /**
@@ -109,6 +135,7 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
+<<<<<<< HEAD
       $post = Post::find($id);
       $post->delete();
       return redirect()->route('postdisp');
@@ -136,4 +163,8 @@ class PostController extends Controller
      {
          return Excel::download(new PostsExport, 'posts.xlsx');
      }
+=======
+        //
+    }
+>>>>>>> 3ac4c5ea334ca08bb4a668b148a9e1dfa67ed556
 }

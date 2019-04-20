@@ -16,6 +16,7 @@ class RecipeController extends Controller
 {
 
     public function __construct() {
+        $this->middleware('auth');
     }
 
     /**
@@ -171,7 +172,7 @@ class RecipeController extends Controller
     public function destroy($id)
     {
         Recipe::destroy($id);
-        return redirect('/feed');
+        return redirect('/userfeed');
     }
     /**
      * Remove the specified resource from storage.

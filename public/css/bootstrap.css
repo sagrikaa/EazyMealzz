@@ -2555,7 +2555,11 @@ fieldset:disabled a.btn {
 }
 
 .btn-warning {
+<<<<<<< HEAD
   color: #fff;
+=======
+  color: #212529;
+>>>>>>> 3ac4c5ea334ca08bb4a668b148a9e1dfa67ed556
   background-color: #ffc107;
   border-color: #ffc107;
 }

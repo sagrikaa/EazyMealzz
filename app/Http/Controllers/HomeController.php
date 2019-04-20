@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+<<<<<<< HEAD
+=======
+use App\Article;
+
+>>>>>>> 3ac4c5ea334ca08bb4a668b148a9e1dfa67ed556
 class HomeController extends Controller
 {
     /**
@@ -23,6 +28,15 @@ class HomeController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
         return view('index');
+=======
+        return view('index', ['articles' => Article::paginate(3)]);
+    }
+
+    public function singleArticle($id)
+    {
+        return view('single', ['article' => Article::find($id)]);
+>>>>>>> 3ac4c5ea334ca08bb4a668b148a9e1dfa67ed556
     }
 }

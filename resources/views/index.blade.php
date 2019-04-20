@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('content')
+<<<<<<< HEAD
 
 <!-----Header-------->
 
@@ -7,6 +8,42 @@
 
 <!-----Header ends----->
 
+=======
+<header>
+      <!--Carousel SLides-->
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+                <!-- Slide One - Set the background image for this slide in the line below -->
+                <div class="carousel-item active" style="background-image: url({{asset('img/slider-1.jpg')}}">
+
+                </div>
+                <!-- Slide Two - Set the background image for this slide in the line below -->
+                <div class="carousel-item" style="background-image: url({{asset('img/slider-2.jpg')}}">
+
+                </div>
+                <!-- Slide Three - Set the background image for this slide in the line below -->
+                <div class="carousel-item" style="background-image: url({{asset('img/slider-3.jpg')}})">
+
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <!-- Search Bar -->
+        <div class="container search">
+            <div class="form-group">
+                <input type="text" class="form-control search-bar shadow" placeholder="Search Recipes">
+            </div>
+        </div>
+
+    </header>
+>>>>>>> 3ac4c5ea334ca08bb4a668b148a9e1dfa67ed556
 <!-- Page Content -->
 <div class="container">
 
@@ -20,6 +57,7 @@
     </ol>
 
     <!-- Project One -->
+<<<<<<< HEAD
     <div class="row">
       <div class="col-md-7">
         <a href="#">
@@ -30,10 +68,24 @@
         <h3>Article One</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
         <a class="btn btn-primary" href="#">View Article
+=======
+    @foreach($articles as $article)
+    <div class="row">
+      <div class="col-md-7">
+        <a href="#">
+          <img class="img-fluid rounded mb-3 mb-md-0" src="{{asset($article->image)}}" alt="" height="50px" width="700px">
+        </a>
+      </div>
+      <div class="col-md-5">
+        <h3>{{ $article->name }}</h3>
+          <p>{{ $article->description }}</p>
+        <a class="btn btn-primary" href="{{route('article.single',['id' => $article->id])}}">View Article
+>>>>>>> 3ac4c5ea334ca08bb4a668b148a9e1dfa67ed556
           <span class="glyphicon glyphicon-chevron-right"></span>
         </a>
       </div>
     </div>
+<<<<<<< HEAD
     <!-- /.row -->
 
     <hr>
@@ -125,3 +177,15 @@
   <!-- /.container -->
 @endsection
 
+=======
+    @endforeach
+    <!-- /.row -->
+
+    <!-- Pagination -->
+
+        <div class="col-lg-12">{{ $articles->links()  }}</div>
+
+  </div>
+  <!-- /.container -->
+@endsection
+>>>>>>> 3ac4c5ea334ca08bb4a668b148a9e1dfa67ed556
