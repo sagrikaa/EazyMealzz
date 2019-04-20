@@ -1,6 +1,5 @@
 @extends('layouts.master')
 @section('content')
-<<<<<<< HEAD
 <div class="mt-5 mb-5 container">
 
     <div class="jumbotron">
@@ -43,11 +42,6 @@
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-=======
-<div class="mt-5 container">
-
-    
->>>>>>> 3ac4c5ea334ca08bb4a668b148a9e1dfa67ed556
 
 </div>
 
