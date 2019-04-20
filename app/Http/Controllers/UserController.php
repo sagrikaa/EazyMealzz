@@ -11,13 +11,23 @@ use App\Exports\UsersExport;
 
 class UserController extends Controller
 {
+  /**
+   * Display a listing of the resource.
+   *
+   * @return \Illuminate\Http\Response
+   */
+
+  public function index()
+  {
+      
+  }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
 
-    public function index()
+    public function indexadmin()
     {
         $title = "USERS";
         $users= User::orderby('id','asc')->paginate(8);
