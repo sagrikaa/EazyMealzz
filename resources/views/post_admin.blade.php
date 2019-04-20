@@ -1,9 +1,15 @@
 @extends('admin')
 @section('admincontent')
 
-<div align="right">
-  <a href="{{ route('post.export')}}" class="btn btn-info mb-4">Export to excel</a>
-</div>
+<table class="table">
+  <tr>
+    <td><h3 style='color:#5C0A1D;'>Posts</h3><br></td>
+    <td><div align="left">
+      <a href="{{ route('post.export')}}" class="btn btn-info mb-4">Export to excel</a>
+    </div></td>
+</tr>
+</table>
+
     <!--User Table-->
     <table class="table">
             <thead class="thead-dark">
@@ -50,7 +56,7 @@
 </tbody>
 </table>
 <!-- Pagination -->
-<div class="pagination justify-content-center mb-4">
+<div class="pagination justify-content-center mb-4 paging">
   <div>
 
          {{$posts->links("pagination::bootstrap-4")}}
