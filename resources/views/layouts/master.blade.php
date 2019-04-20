@@ -69,16 +69,16 @@
                     @endauth
                 </li>
             </ul>
-        </div> 
+        </div>
     </div>
 </nav>
-    
-        <br>
+
+
         <!--Error Messages-->
         @include('inc.messages')
 
         @yield('content')
-    
+
     @if(!Request::is('recipes/create', 'login', 'register'))
         <a class="btn btn-warning floating-button float" href="/recipes/create">
             <i class="fa fa-lg fa-plus mt-3" style="color: white"></i>
