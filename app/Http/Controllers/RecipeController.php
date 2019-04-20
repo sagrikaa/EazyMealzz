@@ -30,6 +30,17 @@ class RecipeController extends Controller
       return view('recipes.index')->with('title',$title)->with('recipes',$recipes);
     }
     /**
+     * for Admin Approval/Reject-Display a listing of Recipes .
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function indexadmin()
+    {
+      $title = "RECIPES";
+      $recipes= Recipe::orderby('id','asc')->paginate(1);
+      return view('recipes.recipe_display')->with('title',$title)->with('recipes',$recipes);
+    }
+    /**
      * Display a listing of the resource.
      *
      * Export to Excel Link
@@ -79,7 +90,7 @@ class RecipeController extends Controller
         }
 
         $imagePath = $request->file('image')->storeAs('recipes', 'recipe-'.$recipe->id.'.'.$request->file('image')->getClientOriginalExtension());
-        
+
         $image = Image::make(Storage::get($imagePath))->resize(320,240)->encode();
         Storage::put($imagePath,$image);
 
@@ -140,7 +151,7 @@ class RecipeController extends Controller
         if ($request->file('image') != null) {
             File::delete('recipes/recipe-'.$recipe->id);
             $imagePath = $request->file('image')->storeAs('recipes', 'recipe-'.$recipe->id.'.'.$request->file('image')->getClientOriginalExtension());
-            
+
             $image = Image::make(Storage::get($imagePath))->resize(480,240)->encode();
             Storage::put($imagePath,$image);
 
