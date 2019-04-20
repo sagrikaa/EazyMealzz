@@ -76,31 +76,21 @@
               <!-- Blog Entries Column -->
               <div class="col-md-8">
         
-<<<<<<< HEAD
                 <h1 class="my-4">Profile
                 <small>{{$currentuser->name}}</small>
-=======
-                <h1 class="my-4">Feed
-                <small>SecondoryText</small>
->>>>>>> 3ac4c5ea334ca08bb4a668b148a9e1dfa67ed556
                 </h1>
         
                 <!-- Blog Post -->
                 @if(count($posts) > 0)
                     @foreach ($posts as $post)
                         <div class="card">
-<<<<<<< HEAD
                         {{-- <img class="card-img-top" src="{{asset('img/Smoothie_Image_post.jpg')}}" alt="Card image cap"> --}}
                         <img class="card-img-top" src="{{$post->img_url}}" alt="Card image cap">
-=======
-                        <img class="card-img-top" src="{{asset('img/Smoothie_Image_post.jpg')}}" alt="Card image cap">
->>>>>>> 3ac4c5ea334ca08bb4a668b148a9e1dfa67ed556
                         <div class="card-body">
                             <h2 class="card-title">{{$post->title}}</h2>
                             <p class="card-text">{{$post->description}}</p>
                         <a href="/post/{{$post->id}}" class="btn btn-primary">Read More &rarr;</a>
                         </div>
-<<<<<<< HEAD
                         <div class="card-footer">
                             Posted on {{$post->created_at}} by <a href="#">{{$currentuser->name}}</a>
                             <span class="container">
@@ -111,11 +101,6 @@
                         </div>
                         {{-- <div class="card-footer text-muted">
                           
-=======
-                        <div class="card-footer text-muted">
-                            Posted on {{$post->created_at}} by
-                            <a href="#">@username</a>
->>>>>>> 3ac4c5ea334ca08bb4a668b148a9e1dfa67ed556
                             <!--Favourite button-->
                             <div class="click">
                                 <span class="fa fa-star-o"></span>
@@ -124,11 +109,7 @@
                                 <p class="info">Added to favourites!</p>
                             </div>
                             </div>
-<<<<<<< HEAD
                         </div> --}}
-=======
-                        </div>
->>>>>>> 3ac4c5ea334ca08bb4a668b148a9e1dfa67ed556
                     @endforeach
                      <!-- Pagination -->
                    <div class="pagination justify-content-center mb-4">
@@ -145,25 +126,16 @@
         
               </div>
             </div>
-<<<<<<< HEAD
      </div>
 
 </div>
-=======
-    </div>
-
->>>>>>> 3ac4c5ea334ca08bb4a668b148a9e1dfa67ed556
          <!-- Bootstrap core JavaScript -->
          <script src="{{asset('js/jquery.min.js')}}"></script>
          <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
          <script src="{{asset('js/userprofile.js')}}"></script>
 
 
-<<<<<<< HEAD
 
     
     
   @endsection
-=======
-        @endsection
->>>>>>> 3ac4c5ea334ca08bb4a668b148a9e1dfa67ed556

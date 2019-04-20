@@ -68,7 +68,6 @@
 
 </tbody>
 </table>
-<<<<<<< HEAD
 <!-- Pagination -->
 <div class="pagination justify-content-center mb-4 paging">
   <div>
@@ -77,7 +76,5 @@
 
 </div>
 </div>
-=======
->>>>>>> 3ac4c5ea334ca08bb4a668b148a9e1dfa67ed556
 
 @endsection
