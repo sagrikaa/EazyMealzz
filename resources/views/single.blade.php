@@ -46,8 +46,7 @@
       </li>
     </ol>
 
-    <!-- Project One -->
-    @foreach($articles as $article)
+
     <div class="row">
       <div class="col-md-7">
         <a href="#">
@@ -57,17 +56,12 @@
       <div class="col-md-5">
         <h3>{{ $article->name }}</h3>
           <p>{{ $article->description }}</p>
-        <a class="btn btn-primary" href="{{route('article.single',['id' => $article->id])}}">View Article
-          <span class="glyphicon glyphicon-chevron-right"></span>
-        </a>
+      
       </div>
     </div>
-    @endforeach
-    <!-- /.row -->
 
-    <!-- Pagination -->
 
-        <div class="col-lg-12">{{ $articles->links()  }}</div>
+
 
   </div>
   <!-- /.container -->

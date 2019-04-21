@@ -2,6 +2,7 @@
 use Illuminate\Support\Facades\Input;
 use App\Recipe;
 use App\User;
+use App\Article;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,11 +14,15 @@ use App\User;
 |
 */
 
+Route::get('/', [
+    'uses' => 'ArticleController@index',
+    'as' => 'index'
+]);
 
-Route::get('/', function () {
-    return view('index');
-});
-
+Route::get('/article/{id}', [
+    'uses' => 'ArticleController@singleArticle',
+    'as' => 'article.single'
+]);
 Auth::routes();
 
 //Home page route
@@ -39,7 +44,7 @@ Route::get('/userhome', 'PostController@index');
 //User Feed Page
 Route::get('userfeed', 'PostController@userfeed');
 
-Route::resource('recipes', 'RecipeController');
+Route::resource('recipes', 'RecipeController')->middleware('auth');
 
 Route::get('/about', function () {
     return view('faq');
@@ -48,7 +53,7 @@ Route::get('/about', function () {
 
 Route::get('/feed', function () {
     return view('/user/user_feed');
-});
+})->middleware('auth');
 
 //User Profile Settings Route
 Route::get('/profilesettings', function () {
@@ -66,10 +71,13 @@ Route::get('/admin', function () {
 
 //Admin Home->User display
 
-Route::get('user', 'UserController@index')->name('userdisp');
-Route::get('/user/export', 'UserController@export')->name('user.export');
-Route::get('recipe', 'RecipeController@index')->name('recipedisp');
-Route::get('/recipe/export', 'RecipeController@export')->name('recipe.export');
+Route::get('useradmin', 'UserController@indexadmin')->name('userdisp');
+Route::get('/useradmin/export', 'UserController@export')->name('user.export');
+Route::get('/recipeadmin', 'RecipeController@indexadmin')->name('recipedisp');
+Route::get('/recipeadmin/export', 'RecipeController@export')->name('recipe.export');
+Route::get('/postadmin', 'PostController@indexadmin')->name('postdisp');
+Route::get('/postadmin/export', 'PostController@export')->name('post.export');
+Route::post('/postadmin/{id}','PostController@destroy')->name('destroypost');
 
 Route::get('/userd', function () {
     return view('/user/user_display');
@@ -100,57 +108,15 @@ Route::post('/users/{id}','UserController@activate')->name('act');
 Route::post('/recipe/{id}','RecipeController@reject')->name('deactrecipe');
 Route::post('/recipes/{id}','RecipeController@approve')->name('actrecipe');
 
-Route::any('/search', function(){
-  $keyword = Input::get('keyword');
-  $scope = Input::get('scope');
-  if($scope == "recipes"){
-
-
-          if($keyword != ''){
-            $data= Recipe::where('recipe_name', 'LIKE', '%'.$keyword.'%')
-                             ->orWhere('recipe_description', 'LIKE', '%'.$keyword.'%')
-                             ->paginate(5)
-                             ->setPath('');
-                $data->appends(array(
-                  'keyword' => Input::get('keyword'),
-                ));
-                if(count($data) > 0){
-                  return view('admin_dashboard')->withData($data);
-                }
-                return view('admin_dashboard')->withMessage("No Results Found");
-          }
-          else{
-            $data=Recipe::paginate(5);
-            return view('admin_dashboard')->withData($data);
-          }
-
-        }
-    elseif($scope == "users"){
-
-      if($keyword != ''){
-        $data= User::where('name', 'LIKE', '%'.$keyword.'%')
-                         ->orWhere('email', 'LIKE', '%'.$keyword.'%')
-                         ->paginate(5)
-                         ->setPath('');
-            $data->appends(array(
-              'keyword' => Input::get('keyword'),
-            ));
-            if(count($data) > 0){
-              return view('admin_dashboard')->withData($data);
-            }
-            return view('admin_dashboard')->withMessage("No Results Found");
-      }
-      else{
-        $title = "USERS";
-        $data=User::orderby('id','asc')->paginate(5);
-        //return view('admin_dashboard')->withData($data);
-        return view('admin_dashboard')->with('title',$title)->with('data',$data);
-      }
-
-    }
-else{
-  return view('admin_dashboard')->withMessage("No Scope Selected");
-}
-
-
-});
+Route::any ( '/search', function () {
+	$q = Input::get ( 'q' );
+	if($q != ""){
+	$user = User::where ( 'name', 'LIKE', '%' . $q . '%' )->orWhere ( 'email', 'LIKE', '%' . $q . '%' )->paginate (5)->setPath ( '' );
+	$pagination = $user->appends ( array (
+				'q' => Input::get ( 'q' )
+		) );
+	if (count ( $user ) > 0)
+		return view ( 'admin_dashboard' )->withDetails ( $user )->withQuery ( $q );
+	}
+		return view ( 'admin_dashboard' )->withMessage ( 'No Results found. Try to search again !' );
+} );

@@ -11,25 +11,35 @@ use App\Exports\UsersExport;
 
 class UserController extends Controller
 {
+  /**
+   * Display a listing of the resource.
+   *
+   * @return \Illuminate\Http\Response
+   */
+
+  public function index()
+  {
+      
+  }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
- 
-    public function index()
+
+    public function indexadmin()
     {
         $title = "USERS";
-        $users= User::all();
+        $users= User::orderby('id','asc')->paginate(8);
         return view('user.user_display')->with('title',$title)->with('users',$users);
     }
-    
+
      /**
       * Display a listing of the resource.
       *
       * Export to Excel Link
       */
-      
+
      public function export()
      {
          return Excel::download(new UsersExport, 'users.xlsx');
@@ -37,9 +47,11 @@ class UserController extends Controller
 
     
      //Check whether the user is authorized to change settings 
+
+
     public function user_settings()
     {
-       
+
         if(Auth::check()){
             $user=Auth::user();
             return view('user.profile_settings_new')->with('user',$user);
@@ -106,19 +118,20 @@ class UserController extends Controller
      //Update User Profile Settings
     public function update(Request $request, $id)
     {
-            
-            $request->validate([
-                
-                'user_avatar'=>'image|nullable|max:1999',
-                'user_name'=>'required'
-                
-              ]);
-            
-            //Image File Handing
-            
-              if($request->file('user_avatar')){
-                //getting filename with extension
-                $fileWithExt = $request->file('user_avatar')->getClientOriginalName();
+
+
+        $request->validate([
+
+            'user_avatar'=>'image|nullable|max:1999',
+            'user_name'=>'required'
+
+        ]);
+        return $request;
+        //Image File Handing
+        if($request->hasFile('user_avatar')){
+            return "success";
+            //getting filename with extension
+            $fileWithExt = $request->file('user_avatar')->getClientOriginalName();
 
                 //getting just the file name without ext
 
@@ -139,7 +152,6 @@ class UserController extends Controller
                 $filenameToStore = "defaultavatar.jpg";
             }
 
-            
 
             $user = User::find($id);
             $user->name = $request->input('user_name');

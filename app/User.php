@@ -52,7 +52,15 @@ class User extends Authenticatable
         return $this->type === self::ADMIN_TYPE;    
     }
 
-    public function posts(){
-        return $this-HasMany('App\Post');
+    public function recipes() {
+        return $this->hasMany('App\Recipe');
+    }
+
+    public function posts() {
+        return $this->hasMany('App\Post');
+    }
+
+    public function comments() {
+        return $this->hasMany('App\Comment');
     }
 }

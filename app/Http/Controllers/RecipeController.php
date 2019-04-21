@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Intervention\Image\Facades\Image;
+
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Recipe;
+use App\Ingredient;
 use Excel;
 use App\Exports\RecipesExport;
 
@@ -24,6 +28,17 @@ class RecipeController extends Controller
     {
       $title = "RECIPES";
       $recipes= Recipe::orderby('id','asc')->paginate(2);
+      return view('recipes.index')->with('title',$title)->with('recipes',$recipes);
+    }
+    /**
+     * for Admin Approval/Reject-Display a listing of Recipes .
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function indexadmin()
+    {
+      $title = "RECIPES";
+      $recipes= Recipe::orderby('id','asc')->paginate(1);
       return view('recipes.recipe_display')->with('title',$title)->with('recipes',$recipes);
     }
     /**
@@ -43,7 +58,8 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        return view('recipes.create');
+        $ingredients = Ingredient::all();
+        return view('recipes.create')->with('ingredients', $ingredients);
     }
 
     /**
@@ -54,7 +70,36 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'steps' => 'required',
+            'ingredients' => 'required',
+        ]);
+
+        $recipe = new Recipe();
+        $recipe->name = $request->input('name');
+        $recipe->description = $request->input('description');
+        $recipe->servings = $request->input('serving_size');
+        $recipe->calories = $request->input('calories');
+        $recipe->steps = $request->input('steps');
+        $recipe->user()->associate(Auth::user());
+        $recipe->save();
+        foreach ($request->input('ingredients') as $ingredient_id) {
+            $ingredient = Ingredient::find($ingredient_id);
+            $recipe->ingredients()->save($ingredient);
+        }
+
+        $imagePath = $request->file('image')->storeAs('recipes', 'recipe-'.$recipe->id.'.'.$request->file('image')->getClientOriginalExtension());
+
+        $image = Image::make(Storage::get($imagePath))->resize(320,240)->encode();
+        Storage::put($imagePath,$image);
+
+        $recipe->image_url = $imagePath;
+
+        $recipe->save();
+
+        return redirect('recipes/'.$recipe->id);
     }
 
     /**
@@ -65,7 +110,8 @@ class RecipeController extends Controller
      */
     public function show($id)
     {
-        //
+        $recipe = Recipe::find($id);
+        return view('recipes.show')->with('recipe', $recipe);
     }
 
     /**
@@ -76,7 +122,8 @@ class RecipeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $recipe = Recipe::find($id);
+        return view('recipes.edit')->with('recipe', $recipe);
     }
 
     /**
@@ -88,7 +135,32 @@ class RecipeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'steps' => 'required',
+        ]);
+
+        $recipe = Recipe::find($id);
+        $recipe->name = $request->input('name');
+        $recipe->description = $request->input('description');
+        $recipe->servings = $request->input('serving_size');
+        $recipe->calories = $request->input('calories');
+        $recipe->steps = $request->input('steps');
+        $recipe->save();
+
+        if ($request->file('image') != null) {
+            File::delete('recipes/recipe-'.$recipe->id);
+            $imagePath = $request->file('image')->storeAs('recipes', 'recipe-'.$recipe->id.'.'.$request->file('image')->getClientOriginalExtension());
+
+            $image = Image::make(Storage::get($imagePath))->resize(480,240)->encode();
+            Storage::put($imagePath,$image);
+
+            $recipe->image_url = $imagePath;
+            $recipe->save();
+        }
+
+        return redirect('recipes/'.$recipe->id);
     }
 
     /**
@@ -99,7 +171,8 @@ class RecipeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Recipe::destroy($id);
+        return redirect('/userfeed');
     }
     /**
      * Remove the specified resource from storage.
