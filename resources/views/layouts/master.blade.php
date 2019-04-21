@@ -76,17 +76,10 @@
         </div>
     </div>
 </nav>
-
-
-        <!--Error Messages-->
-        @include('inc.messages')
-
-        @yield('content')
-
-=======
+        <!--Section for section rendering-->
     <div>
         <br>
-        
+         <!--Error Messages-->
         @include('inc.messages')
         
         @yield('content')
@@ -115,7 +108,6 @@
 
     <!-- Bootstrap core JavaScript -->
     <script src={{asset('js/jquery.min.js')}}></script>
-<<<<<<< HEAD
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script type="text/javascript" src="{{ asset('js/bootstrap-multiselect.js') }}"></script>
     <script src={{asset('js/bootstrap.min.js')}}></script>
@@ -128,12 +120,8 @@
         });
         });
 </script>
+
+   
 </body>
 
 </html>
-=======
-    <script src={{asset('js/bootstrap.min.js')}}></script>
-</body>
-
-</html>
->>>>>>> 3ac4c5ea334ca08bb4a668b148a9e1dfa67ed556
