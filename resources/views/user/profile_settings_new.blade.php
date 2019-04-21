@@ -16,12 +16,12 @@
           
           <h3 class="col-lg-12 col-med-12">Personal info</h3>
           
-        <form class="form-horizontal col-lg-12 col-med-12 col-sm-12" method="get" action="/updateUserProfile/{{$user->id}}"        role="form" enctype="multipart/form-data">
+        <form class="form-horizontal col-lg-12 col-med-12 col-sm-12" method="get" action="/updateUserProfile/{{$user->id}}"        enctype="multipart/form-data">
 
-                <div class=" col-lg-4 col-md-4">
-                    <div class="text-center">
+                <div class="form-group">
+                    <div class=" col-lg-4 col-md-4 text-center">
                         {{-- <img src="/storage/user_avatar/{{$user->avatar}}"  class="avatar img-circle" alt="avatar"> --}}
-                      <img src="{//placehold.it/100}"  class="avatar img-circle" alt="avatar">
+                      {{-- <img src="{//placehold.it/100}"  class="avatar img-circle" alt="avatar"> --}}
                       <h6>Upload a different photo...</h6>
                       <input type="file" class="form-control" name="user_avatar"> 
                     </div>
@@ -34,13 +34,6 @@
                   <input class="form-control" name="user_name" type="text" value="{{$user->name}}">
                   </div>
                 </div>
-
-                {{-- <div class="form-group">
-                  <label class="col-lg-3 control-label">Last name:</label>
-                  <div class="col-lg-8">
-                    <input class="form-control" type="text" value="Bishop">
-                  </div>
-                </div> --}}
 
                 <div class="form-group">
                   <label class="col-lg-3 control-label">Email:</label>
@@ -75,26 +68,26 @@
                 
               
                 
-              <div class="form-group">
+                <div class="form-group">
                   <label class="col-md-3 control-label">Title:</label>
                   <div class="col-md-6">
-                    <input type="text"  name="user_title" class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" value="{{$user->user_title}}">
+                    <textarea type="text"  name="user_title" class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" placeholder="{{$user->user_title}}" value="{{$user->user_title}}"></textarea>
                   
                     
+                  </div>
                 </div>
-              </div>
             
                 <div class="form-group">
                   <label class="col-md-3 control-label">Description:</label>
                   <div class="col-md-6">
-                      <textarea  name="user_description" class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" placeholder="{{$user->user_description}}" value=""></textarea>
+                      <textarea  name="user_description" class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" placeholder="{{$user->user_description}}" value="{{$user->user_description}}"></textarea>
                   </div>
                 </div>
                 
                 <div class="form-group">
                   <label class="col-md-3 control-label"></label>
                   <div class="col-md-8">
-                    <input type="submit" class="btn btn-primary" value="Save Changes">
+                    <input type="submit" class="btn btn-primary"  name="submit" value="Save Changes">
                     <span></span>
                     <input type="reset" class="btn btn-default" value="Cancel">
                   </div>
