@@ -18,7 +18,7 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-
+    //diaplays all the posts by a single user on his home page
     public function index()
     {
 
@@ -35,6 +35,7 @@ class PostController extends Controller
         return view('user.userprofile')->with('title',$title)->with('posts',$posts)->with('currentuser',$user);
     }
 
+    //Displays all the all post for user on his feed
     public function userfeed(){
         $title = "Feed";
         $posts=Post::orderby('created_at','desc')->paginate(2);
@@ -68,6 +69,8 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    //Redirects to a single post page
     public function show($id)
     {
        $post= Post::find($id);

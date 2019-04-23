@@ -64,10 +64,7 @@
                         <a class="dropdown-item" href="/userhome">My profile</a>
                         <a class="dropdown-item" href="/userfeed">Feed</a>
                         <a class="dropdown-item" href="/profilesetting">Settings</a>
-                        <a class="dropdown-item" href="/userhome">My profile</a>
-                        <a class="dropdown-item" href="/userfeed">Feed</a>
-                        <a class="dropdown-item" href="/profilesetting">Settings</a>
-                        <a class="dropdown-item" href="{{ url('/feed') }}">Your Feed</a>
+                        
                         <a class="dropdown-item" href="{{ url('/logout') }}">Logout</a>
                     </div>
                     @endauth
