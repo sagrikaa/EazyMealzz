@@ -48,7 +48,7 @@ class CommentController extends Controller
         $post_link='/post/{{post_id}}';
         $comment->save();
 
-        return redirect()->back();
+        return back();
     }
 
     /**

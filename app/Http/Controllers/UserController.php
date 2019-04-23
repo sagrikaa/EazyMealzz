@@ -118,20 +118,20 @@ class UserController extends Controller
      //Update User Profile Settings
     public function update(Request $request, $id)
     {
-
+        
 
         $request->validate([
 
-            'user_avatar'=>'image|nullable|max:1999',
+            'user_avatar'=>'nullable|max:1999|mimes:jpeg,png,jpg,svg',
             'user_name'=>'required'
 
         ]);
-        return $request;
+       
         //Image File Handing
         if($request->hasFile('user_avatar')){
             return "success";
             //getting filename with extension
-            $fileWithExt = $request->file('user_avatar')->getClientOriginalName();
+               $fileWithExt = $request->file('user_avatar')->getClientOriginalName();
 
                 //getting just the file name without ext
 
@@ -152,13 +152,14 @@ class UserController extends Controller
                 $filenameToStore = "defaultavatar.jpg";
             }
 
-
+            return $filenameToStore;
+            
             $user = User::find($id);
             $user->name = $request->input('user_name');
             $user->email = $request->input('user_email');
             $user->user_title = $request->input('user_title');
             $user->user_description  =$request->input('user_description');
-            $user->avatar=$request->input('user_avatar');
+            $user->avatar=$filenameToStore;
             // $post_id=$request->input('post_id');
             // $post_link='/post/{{post_id}}';
             $user->save();

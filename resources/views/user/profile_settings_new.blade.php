@@ -16,14 +16,14 @@
           
           <h3 class="col-lg-12 col-med-12">Personal info</h3>
           
-        <form class="form-horizontal col-lg-12 col-med-12 col-sm-12" method="get" action="/updateUserProfile/{{$user->id}}"        enctype="multipart/form-data">
-
+        <form class="form-horizontal col-lg-12 col-med-12 col-sm-12" method="post" action="/updateUserProfile/{{$user->id}}"        enctype="multipart/form-data">
+                @csrf
                 <div class="form-group">
                     <div class=" col-lg-4 col-md-4 text-center">
                         {{-- <img src="/storage/user_avatar/{{$user->avatar}}"  class="avatar img-circle" alt="avatar"> --}}
                       {{-- <img src="{//placehold.it/100}"  class="avatar img-circle" alt="avatar"> --}}
                       <h6>Upload a different photo...</h6>
-                      <input type="file" class="form-control" name="user_avatar"> 
+                      <input type="file" class="form-control" name="user_avatar" accept=".jpg,.jpeg,.png"> 
                     </div>
                 </div>
                   

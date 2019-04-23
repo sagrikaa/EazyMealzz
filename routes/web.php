@@ -62,7 +62,7 @@ Route::get('/profilesettings', function () {
 
 Route::get('/profilesetting','UserController@user_settings')->middleware('auth');
 
-Route::get('/updateUserProfile/{id}', 'UserController@update');
+Route::post('/updateUserProfile/{id}', 'UserController@update');
 
 //Admin Home
 Route::get('/admin', function () {

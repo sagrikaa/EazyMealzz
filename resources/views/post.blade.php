@@ -52,7 +52,10 @@
             <div class="card my-4">
               <h5 class="card-header">Leave a Comment:</h5>
               <div class="card-body">
-                <form  action='/storeComment'>
+
+                @csrf
+
+                <form  id='comment_form'  action='/storeComment'>
                   <div class="form-group">
                     <textarea class="form-control" rows="3" value="" name="comment_box"></textarea>
                   </div>
@@ -169,5 +172,7 @@
         <!-- /.row -->
     
       </div>
+
+      <script src={{asset('js/comments.js')}}></script>
       <!-- /.container -->
     @endsection
