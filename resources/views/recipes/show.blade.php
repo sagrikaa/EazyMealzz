@@ -29,7 +29,7 @@
             </div>
             <div class="col-md-12">
                 <h5>Steps</h5>
-                <p>{{ $recipe->steps }}</p>
+                <p>{!! $recipe->steps !!}</p>
             </div>
             @if($recipe->user == Auth::user())
             <div class="col-md-12 mt-3">
