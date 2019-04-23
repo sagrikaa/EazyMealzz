@@ -38,11 +38,15 @@
         </div>
         <div class="form-group">
             <label for="exampleFormControlTextarea1">Steps</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" name="steps" rows="15"></textarea>
+            <textarea id="article-ckeditor" class="form-control" name="steps" rows="15"></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 
 </div>
+<script src="https://cdn.ckeditor.com/4.5.6/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace( 'article-ckeditor' );
+</script>
 
 @endsection

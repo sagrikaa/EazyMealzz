@@ -218,7 +218,7 @@ img.rounded {
 }
 
 /*buttons*/
-.btn {
+.button {
     position: relative;
     padding: 12px 30px;
     margin: .3125rem 1px;
@@ -235,7 +235,7 @@ img.rounded {
     will-change: box-shadow,transform;
 }
 
-.btn.btn-just-icon {
+.button.btn-just-icon {
     font-size: 20px;
     height: 41px;
     min-width: 41px;
@@ -246,7 +246,7 @@ img.rounded {
     line-height: 41px;
 }
 
-.btn.btn-just-icon fa{
+.button.btn-just-icon fa{
     margin-top: 0;
     position: absolute;
     width: 100%;
@@ -257,7 +257,7 @@ img.rounded {
     line-height: 41px;
     font-size: 20px;
 }
-.btn.btn-link{
+.button.btn-link{
     background-color: transparent;
     color: #999;
 }
