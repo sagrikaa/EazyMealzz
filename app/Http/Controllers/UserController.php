@@ -122,14 +122,14 @@ class UserController extends Controller
 
         $request->validate([
 
-            'user_avatar'=>'nullable|max:1999|mimes:jpeg,png,jpg,svg',
+            'user_avatar'=>'nullable|max:3500|mimes:jpeg,png,jpg,svg',
             'user_name'=>'required'
 
         ]);
        
         //Image File Handing
         if($request->hasFile('user_avatar')){
-            return "success";
+            
             //getting filename with extension
                $fileWithExt = $request->file('user_avatar')->getClientOriginalName();
 
@@ -143,17 +143,17 @@ class UserController extends Controller
 
                 //file name to store
 
-                $filenameToStore = $fileWithExt._.time().".".$Ext;
+                $filenameToStore = $filenameWithoutExt."_".time().".".$Ext;
 
                 //path
-                $path = $request->file('user_avatar')->storeAs('public/user_avatar',$filenameToStore);
+                $path = $request->file('user_avatar')->storeAs('user_avatar',$filenameToStore);
             }
             else{
                 $filenameToStore = "defaultavatar.jpg";
             }
 
-            return $filenameToStore;
-            
+           
+
             $user = User::find($id);
             $user->name = $request->input('user_name');
             $user->email = $request->input('user_email');
@@ -164,7 +164,7 @@ class UserController extends Controller
             // $post_link='/post/{{post_id}}';
             $user->save();
 
-            return "success";
+            return back()->with("message","Success");
     }
 
     /**

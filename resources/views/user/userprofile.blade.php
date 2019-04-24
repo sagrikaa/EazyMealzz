@@ -18,7 +18,9 @@
                               <div class="col-md-6 ml-auto mr-auto">
                                 <div class="profile ">
                                       <div class="avatar">
-                                          <img src="{{asset('img/sagrika_profile_edit.jpg')}}"  alt="Circle Image" style="height: 250px;width: 250px;" class="img-raised rounded-circle img-fluid">
+                                          {{-- <img src="{{asset('img/sagrika_profile_edit.jpg')}}"  alt="Circle Image" style="height: 250px;width: 250px;" class="img-raised rounded-circle img-fluid"> --}}
+                                          <img src="{{asset('storage/user_avatar/'.$currentuser->avatar) }}"  alt="Circle Image" style="height: 250px;width: 250px;" class="img-raised rounded-circle img-fluid">
+                                         
                                       </div>
                                       <div class="name">
                                           <h3 class="title">{{$currentuser->name}}</h3>
